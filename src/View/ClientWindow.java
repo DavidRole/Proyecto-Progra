@@ -41,7 +41,7 @@ public class ClientWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Bienvenido al registro de citas");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 260, 40));
 
@@ -76,9 +76,9 @@ public class ClientWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 220, 20));
 
         bt_register.setText("Registrarse");
-        bt_register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_registerActionPerformed(evt);
+        bt_register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registerMouseClicked(evt);
             }
         });
         getContentPane().add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 130, -1));
@@ -93,9 +93,13 @@ public class ClientWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_singUpActionPerformed
 
-    private void bt_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_registerActionPerformed
+    private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FormRegister().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_bt_registerMouseClicked
 
     /**
      * @param args the command line arguments
