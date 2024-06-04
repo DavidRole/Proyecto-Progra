@@ -4,16 +4,23 @@
  */
 package View;
 
+import controler.FormRegisterControler;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author darod
  */
 public class FormRegister extends javax.swing.JFrame {
 
+    private FormRegisterControler controler;
+
     /**
      * Creates new form FormRegister
      */
     public FormRegister() {
+        controler = new FormRegisterControler();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -76,12 +83,6 @@ public class FormRegister extends javax.swing.JFrame {
         jLabel6.setText("Nombre (Maximo 30 caracteres)");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 230, -1));
         getContentPane().add(jtxf_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 220, -1));
-
-        jpf_Password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpf_PasswordActionPerformed(evt);
-            }
-        });
         getContentPane().add(jpf_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 220, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -128,16 +129,27 @@ public class FormRegister extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jpf_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpf_PasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpf_PasswordActionPerformed
-
     private void jbt_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_RegisterActionPerformed
+        String id = Jtxf_ID.getText();
+        String email = jtxf_Email.getText();
+        String password = jpf_Password.getText();
+        String[] birthdaydate1 = jtxf_BirthDate.getText().split("/");
+        int birthdayDay = Integer.parseInt(birthdaydate1[0]);
+        int birthdayMonth = Integer.parseInt(birthdaydate1[1]);
+        int birthdayYear = Integer.parseInt(birthdaydate1[2]);
 
+        GregorianCalendar birthdaydate = new GregorianCalendar(birthdayYear, birthdayMonth, birthdayDay);
+        
+        String name = jtxf_Name.getText();
+        String lastName = jtxf_LastName.getText();
+        String phoneNumber = jtxf_phoneNumber.getText();
+        
+        JOptionPane.showMessageDialog(null, controler.Register(id, email, password, birthdaydate, name, lastName, phoneNumber));
+        dispose();
     }//GEN-LAST:event_jbt_RegisterActionPerformed
 
     private void jbt_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_CancelActionPerformed
-
+        dispose();
     }//GEN-LAST:event_jbt_CancelActionPerformed
 
     /**
