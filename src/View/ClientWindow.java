@@ -15,6 +15,7 @@ public class ClientWindow extends javax.swing.JFrame {
      */
     public ClientWindow() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,6 +27,8 @@ public class ClientWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pf_password = new javax.swing.JPasswordField();
         txt_user = new javax.swing.JTextField();
@@ -36,32 +39,36 @@ public class ClientWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         bt_register = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+
+        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Bienvenido al registro de citas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 260, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 40));
 
         pf_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(pf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 130, -1));
+        getContentPane().add(pf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, -1));
 
         txt_user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 130, -1));
+        getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
 
         lb_indication.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lb_indication.setText("Nombre");
-        getContentPane().add(lb_indication, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        getContentPane().add(lb_indication, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, -1));
 
         lb_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lb_password.setText("Contraseña");
-        getContentPane().add(lb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        getContentPane().add(lb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Inicio de Sesión");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 100, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 30));
 
         bt_singUp.setText("Iniciar Sesión");
         bt_singUp.addActionListener(new java.awt.event.ActionListener() {
@@ -69,11 +76,11 @@ public class ClientWindow extends javax.swing.JFrame {
                 bt_singUpActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_singUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 130, -1));
+        getContentPane().add(bt_singUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 130, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
-        jLabel4.setText("Si aún no tienes cuenta puedes registrarte");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 220, 20));
+        jLabel4.setText("Si aún no tienes cuenta, puedes registrarte");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 240, 20));
 
         bt_register.setText("Registrarse");
         bt_register.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,10 +88,10 @@ public class ClientWindow extends javax.swing.JFrame {
                 bt_registerMouseClicked(evt);
             }
         });
-        getContentPane().add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 130, -1));
+        getContentPane().add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, -1));
 
-        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 300, 360));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 300, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,6 +151,8 @@ public class ClientWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lb_indication;
     private javax.swing.JLabel lb_password;
