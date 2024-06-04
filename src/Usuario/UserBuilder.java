@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyectoprogra;
+package Usuario;
 
-import java.text.SimpleDateFormat;
+import Usuario.User;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.regex.Pattern;
 
 /**
  *
