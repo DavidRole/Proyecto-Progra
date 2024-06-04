@@ -110,7 +110,7 @@ public class FormRegister extends javax.swing.JFrame {
         });
         getContentPane().add(jbt_Cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(51, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
