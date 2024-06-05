@@ -15,6 +15,8 @@ public class HomeWindow extends javax.swing.JFrame {
      */
     public HomeWindow() {
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -27,25 +29,24 @@ public class HomeWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         lb_title = new javax.swing.JLabel();
-        lb_indication = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         bt_sched = new javax.swing.JButton();
         bt_cancelApp = new javax.swing.JButton();
         bt_history = new javax.swing.JButton();
+        lb_indication = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lb_title.setForeground(new java.awt.Color(0, 0, 0));
         lb_title.setText("Bienvenido a nuestro sistema de Citas");
         getContentPane().add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 330, 70));
 
-        lb_indication.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lb_indication.setText("Por favor presione el botón de la accion a realizar");
-        getContentPane().add(lb_indication, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 310, 30));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-
+        bt_sched.setBackground(new java.awt.Color(0, 0, 0));
+        bt_sched.setForeground(new java.awt.Color(255, 255, 255));
         bt_sched.setText("Agendar Citas");
         bt_sched.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +54,8 @@ public class HomeWindow extends javax.swing.JFrame {
             }
         });
 
+        bt_cancelApp.setBackground(new java.awt.Color(0, 0, 0));
+        bt_cancelApp.setForeground(new java.awt.Color(255, 255, 255));
         bt_cancelApp.setText("Cancelar Citas");
         bt_cancelApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +63,8 @@ public class HomeWindow extends javax.swing.JFrame {
             }
         });
 
+        bt_history.setBackground(new java.awt.Color(0, 0, 0));
+        bt_history.setForeground(new java.awt.Color(255, 255, 255));
         bt_history.setText("Consultar Historial");
         bt_history.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,86 +72,60 @@ public class HomeWindow extends javax.swing.JFrame {
             }
         });
 
+        lb_indication.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lb_indication.setForeground(new java.awt.Color(0, 0, 0));
+        lb_indication.setText("Por favor presione el botón de la accion a realizar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lb_indication, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bt_cancelApp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_sched, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(bt_history)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(bt_sched)
+                .addGap(38, 38, 38)
+                .addComponent(bt_cancelApp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(bt_history)
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
-                .addComponent(bt_sched)
-                .addGap(32, 32, 32)
-                .addComponent(bt_cancelApp)
-                .addGap(33, 33, 33)
-                .addComponent(bt_history)
-                .addGap(24, 24, 24))
+                .addGap(86, 86, 86)
+                .addComponent(lb_indication, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_sched)
+                    .addComponent(bt_cancelApp)
+                    .addComponent(bt_history))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 210));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_historyActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_bt_historyActionPerformed
 
     private void bt_schedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_schedActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new scheduleAppointmentWindow().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_bt_schedActionPerformed
 
     private void bt_cancelAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelAppActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_cancelAppActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeWindow().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cancelApp;
