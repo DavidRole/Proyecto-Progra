@@ -66,12 +66,12 @@ public class ClientWindow extends javax.swing.JFrame {
 
         pf_password.setBackground(new java.awt.Color(255, 255, 255));
         pf_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        pf_password.setForeground(new java.awt.Color(255, 255, 255));
+        pf_password.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(pf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, -1));
 
         txt_Id.setBackground(new java.awt.Color(255, 255, 255));
         txt_Id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_Id.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Id.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txt_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
 
         lb_indication.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

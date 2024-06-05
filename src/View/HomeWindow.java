@@ -112,7 +112,11 @@ public class HomeWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_historyActionPerformed
-
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new HistoryAppointmentWindow().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_bt_historyActionPerformed
 
     private void bt_schedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_schedActionPerformed
@@ -124,7 +128,11 @@ public class HomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_schedActionPerformed
 
     private void bt_cancelAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelAppActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CancelAppointmentWindow().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_bt_cancelAppActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

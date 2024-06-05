@@ -56,6 +56,11 @@ public class HistoryAppointmentWindow extends javax.swing.JFrame {
         getContentPane().add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         bt_home.setText("Inicio");
+        bt_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_homeActionPerformed(evt);
+            }
+        });
         getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
@@ -75,6 +80,10 @@ public class HistoryAppointmentWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_homeActionPerformed
+        dispose();
+    }//GEN-LAST:event_bt_homeActionPerformed
 
     /**
      * @param args the command line arguments
