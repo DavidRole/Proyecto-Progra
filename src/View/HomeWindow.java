@@ -4,19 +4,20 @@
  */
 package View;
 
+import doctor.doctor;
+import java.util.ArrayList;
+
 /**
  *
  * @author darod
  */
 public class HomeWindow extends javax.swing.JFrame {
-
     /**
      * Creates new form HomeWindow
      */
     public HomeWindow() {
         initComponents();
         setLocationRelativeTo(null);
-
     }
 
     /**

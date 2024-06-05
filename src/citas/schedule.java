@@ -4,7 +4,6 @@
  */
 package citas;
 
-import citas.appointment;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.PriorityQueue;
@@ -16,6 +15,7 @@ import java.util.PriorityQueue;
 public class schedule {
     private PriorityQueue<appointment> list = new PriorityQueue<>();
     private GregorianCalendar date; 
+    
     
     public String addAppointment(appointment ap){
         date = ap.getDate();

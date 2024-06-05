@@ -4,11 +4,22 @@
  */
 package View;
 
+import citas.appointment;
+import controler.CancelAppointmentControler;
+import doctor.doctor;
+import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author darod
  */
 public class CancelAppointmentWindow extends javax.swing.JFrame {
+
+    private CancelAppointmentControler controler;
+    private ArrayList<doctor> doctorList;
+    private DefaultTableModel dm;
 
     /**
      * Creates new form CancelAppointmentWindow
@@ -16,6 +27,20 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
     public CancelAppointmentWindow() {
         initComponents();
         setLocationRelativeTo(null);
+        doctorList = new ArrayList<>();
+        controler = new CancelAppointmentControler(doctorList);
+
+        //Se crea un modelo para manipular la tabla
+        dm = new DefaultTableModel();
+
+        //Establece las columnas
+        Object[] columnas = {"Doctor", "Especialidad", "Hora", "Fecha"};
+        dm.setColumnIdentifiers(columnas);
+        //Se indica que se puede seleccionar un elemento
+        tb_AppointmentsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tb_AppointmentsList.setDefaultEditor(Object.class, null);
+
+        tb_AppointmentsList.setModel(dm);
 
     }
 
@@ -50,6 +75,7 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tb_AppointmentsList);
+        tb_AppointmentsList.setColumnModel(dm);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 63, 480, 290));
 
@@ -58,6 +84,12 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
         getContentPane().add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         bt_cancelAppointment.setText("Cancelar Cita");
+        bt_cancelAppointment.setEnabled(false);
+        bt_cancelAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cancelAppointmentActionPerformed(evt);
+            }
+        });
         getContentPane().add(bt_cancelAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         bt_home.setText("Inicio");
@@ -89,6 +121,11 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
     private void bt_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_homeActionPerformed
         dispose();
     }//GEN-LAST:event_bt_homeActionPerformed
+
+    private void bt_cancelAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelAppointmentActionPerformed
+        
+        
+    }//GEN-LAST:event_bt_cancelAppointmentActionPerformed
 
     /**
      * @param args the command line arguments
