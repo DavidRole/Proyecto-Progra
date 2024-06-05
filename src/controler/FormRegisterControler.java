@@ -43,4 +43,13 @@ public class FormRegisterControler {
         }
         return "";
     }
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(ArrayList<User> userList) {
+        this.userList = userList;
+    }
+    
 }

@@ -19,8 +19,8 @@ public class FormRegister extends javax.swing.JFrame {
     /**
      * Creates new form FormRegister
      */
-    public FormRegister() {
-        controler = new FormRegisterControler();
+    public FormRegister(FormRegisterControler controler) {
+        this.controler = controler;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -146,6 +146,7 @@ public class FormRegister extends javax.swing.JFrame {
         
         String menssage = controler.Register(id, email, password, birthdaydate, name, lastName, phoneNumber);
         JOptionPane.showMessageDialog(null, menssage);
+        System.out.println(password);
         if (menssage.equals("Usuario registrado correctamente")) {
             dispose();
         }

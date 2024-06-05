@@ -4,11 +4,18 @@
  */
 package View;
 
+import controler.ClientWindowControler;
+import controler.FormRegisterControler;
+import controler.HomeWindowControler;
+
 /**
  *
  * @author darod
  */
 public class ClientWindow extends javax.swing.JFrame {
+
+    private ClientWindowControler controler;
+    private FormRegisterControler controlerForm;
 
     /**
      * Creates new form ClientWindow
@@ -16,6 +23,9 @@ public class ClientWindow extends javax.swing.JFrame {
     public ClientWindow() {
         initComponents();
         setLocationRelativeTo(null);
+        controlerForm = new FormRegisterControler();
+        controler = new ClientWindowControler(controlerForm);
+        
     }
 
     /**
@@ -31,7 +41,7 @@ public class ClientWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pf_password = new javax.swing.JPasswordField();
-        txt_user = new javax.swing.JTextField();
+        txt_Id = new javax.swing.JTextField();
         lb_indication = new javax.swing.JLabel();
         lb_password = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -55,11 +65,11 @@ public class ClientWindow extends javax.swing.JFrame {
         pf_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         getContentPane().add(pf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, -1));
 
-        txt_user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
+        txt_Id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txt_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
 
         lb_indication.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lb_indication.setText("Nombre");
+        lb_indication.setText("Cedula");
         getContentPane().add(lb_indication, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, -1));
 
         lb_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -97,13 +107,23 @@ public class ClientWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_singUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_singUpActionPerformed
-        // TODO add your handling code here:
+        String id = txt_Id.getText();
+        String password = pf_password.getText();
+
+        if (controler.logIn(id, password)) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new HomeWindow().setVisible(true);
+                }
+            });
+        }
+
     }//GEN-LAST:event_bt_singUpActionPerformed
 
     private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormRegister().setVisible(true);
+                new FormRegister(controlerForm).setVisible(true);
             }
         });
     }//GEN-LAST:event_bt_registerMouseClicked
@@ -157,6 +177,6 @@ public class ClientWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lb_indication;
     private javax.swing.JLabel lb_password;
     private javax.swing.JPasswordField pf_password;
-    private javax.swing.JTextField txt_user;
+    private javax.swing.JTextField txt_Id;
     // End of variables declaration//GEN-END:variables
 }
