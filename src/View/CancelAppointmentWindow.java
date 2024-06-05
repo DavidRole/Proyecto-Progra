@@ -15,6 +15,8 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
      */
     public CancelAppointmentWindow() {
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -91,7 +93,6 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cancelAppointment;

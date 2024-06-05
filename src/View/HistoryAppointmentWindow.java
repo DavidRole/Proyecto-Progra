@@ -15,6 +15,8 @@ public class HistoryAppointmentWindow extends javax.swing.JFrame {
      */
     public HistoryAppointmentWindow() {
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -88,7 +90,6 @@ public class HistoryAppointmentWindow extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_home;
