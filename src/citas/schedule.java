@@ -23,7 +23,7 @@ public class schedule {
         int minHour = 8;        //Eso representa a las 8am en formato 24h 
         int maxHour = 16;    //Eso representa a las 4pm en formato 24h 
         int inicioAlmuerzo = 12;    //inicio hora de almuerzo de los medicos  
-        int finAlmuerzo = 13;       //final hora de almuerzo de los medicos 
+        int finAlmuerzo = 13;       //final hora de almuerzo de los medicos .
 
         if(hour >= minHour && hour < maxHour){
             if(hour != inicioAlmuerzo && hour >= finAlmuerzo){
