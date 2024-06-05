@@ -10,7 +10,7 @@ import controler.HomeWindowControler;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *  puta figures
  * @author darod
  */
 public class ClientWindow extends javax.swing.JFrame {
