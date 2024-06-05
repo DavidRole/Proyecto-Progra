@@ -4,11 +4,19 @@
  */
 package View;
 
+import controler.ClientWindowControler;
+import controler.FormRegisterControler;
+import controler.HomeWindowControler;
+import javax.swing.JOptionPane;
+
 /**
- *
+ *  puta figures
  * @author darod
  */
 public class ClientWindow extends javax.swing.JFrame {
+
+    private ClientWindowControler controler;
+    private FormRegisterControler controlerForm;
 
     /**
      * Creates new form ClientWindow
@@ -16,6 +24,9 @@ public class ClientWindow extends javax.swing.JFrame {
     public ClientWindow() {
         initComponents();
         setLocationRelativeTo(null);
+        controlerForm = new FormRegisterControler();
+        controler = new ClientWindowControler(controlerForm);
+        
     }
 
     /**
@@ -31,7 +42,7 @@ public class ClientWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pf_password = new javax.swing.JPasswordField();
-        txt_user = new javax.swing.JTextField();
+        txt_Id = new javax.swing.JTextField();
         lb_indication = new javax.swing.JLabel();
         lb_password = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -49,27 +60,36 @@ public class ClientWindow extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bienvenido al registro de citas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 250, 40));
 
+        pf_password.setBackground(new java.awt.Color(255, 255, 255));
         pf_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pf_password.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(pf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, -1));
 
-        txt_user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
+        txt_Id.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_Id.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(txt_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, -1));
 
         lb_indication.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lb_indication.setText("Nombre");
+        lb_indication.setForeground(new java.awt.Color(0, 0, 0));
+        lb_indication.setText("Cedula");
         getContentPane().add(lb_indication, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, -1));
 
         lb_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lb_password.setForeground(new java.awt.Color(0, 0, 0));
         lb_password.setText("Contraseña");
         getContentPane().add(lb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Inicio de Sesión");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 30));
 
+        bt_singUp.setForeground(new java.awt.Color(0, 0, 0));
         bt_singUp.setText("Iniciar Sesión");
         bt_singUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,9 +99,11 @@ public class ClientWindow extends javax.swing.JFrame {
         getContentPane().add(bt_singUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 130, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Si aún no tienes cuenta, puedes registrarte");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 240, 20));
 
+        bt_register.setForeground(new java.awt.Color(0, 0, 0));
         bt_register.setText("Registrarse");
         bt_register.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,20 +112,32 @@ public class ClientWindow extends javax.swing.JFrame {
         });
         getContentPane().add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, -1));
 
-        jPanel2.setBackground(new java.awt.Color(51, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 300, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_singUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_singUpActionPerformed
-        // TODO add your handling code here:
+        String id = txt_Id.getText();
+        String password = pf_password.getText();
+
+        if (controler.logIn(id, password)) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new HomeWindow().setVisible(true);
+                }
+            });
+        }else{
+            JOptionPane.showMessageDialog(null, "Contraseña o Cedula incorrecta digitela de nuevo");
+        }
+
     }//GEN-LAST:event_bt_singUpActionPerformed
 
     private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormRegister().setVisible(true);
+                new FormRegister(controlerForm).setVisible(true);
             }
         });
     }//GEN-LAST:event_bt_registerMouseClicked
@@ -157,6 +191,6 @@ public class ClientWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lb_indication;
     private javax.swing.JLabel lb_password;
     private javax.swing.JPasswordField pf_password;
-    private javax.swing.JTextField txt_user;
+    private javax.swing.JTextField txt_Id;
     // End of variables declaration//GEN-END:variables
 }

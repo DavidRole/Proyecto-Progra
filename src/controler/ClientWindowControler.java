@@ -4,10 +4,28 @@
  */
 package controler;
 
+import Usuario.User;
+import java.util.ArrayList;
+
 /**
  *
  * @author crist
  */
 public class ClientWindowControler {
+    ArrayList<User> userlist;
+
+    public ClientWindowControler(FormRegisterControler controler) {
+        userlist = controler.getUserList();
+    }
+    
+    public boolean logIn(String id, String password){
+        for (User user : userlist) {
+            if (user.getId().equals(id) && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
 }
