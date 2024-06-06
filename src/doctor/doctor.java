@@ -4,16 +4,22 @@
  */
 package doctor;
 
+import citas.schedule;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author david
  */
 public class doctor {
-       private int id; 
-    private String name;
-    private speciality s; 
 
-    public doctor() {}
+    private int id;
+    private String name;
+    private speciality spec;
+
+    public doctor() {
+    }
 
     public doctor(int id, String name) {
         this.id = id;
@@ -36,16 +42,16 @@ public class doctor {
         this.name = name;
     }
 
-    public speciality getS() {
-        return s;
+    public speciality getSpec() {
+        return spec;
     }
 
-    public void setS(speciality s) {
-        this.s = s;
+    public void setSpec(speciality spec) {
+        this.spec = spec;
     }
 
     @Override
     public String toString() {
-        return "Name: " + name +" id: " + id + ", specialty: " + s ;
+        return "Name: " + name + " id: " + id + ", specialty: " + spec;
     }
 }

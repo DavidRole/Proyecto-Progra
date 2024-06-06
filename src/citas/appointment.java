@@ -12,12 +12,13 @@ import java.util.GregorianCalendar;
  *
  * @author david
  */
-public class appointment {
+public class appointment implements Comparable<appointment>{
 
     private User pacient; 
     private GregorianCalendar date;
     private static int id = 0; 
-
+    private boolean available;
+    
     public appointment() {
     }
     
@@ -25,11 +26,24 @@ public class appointment {
     public appointment(User pacient, GregorianCalendar date){
         this.pacient = pacient; 
         this.date = date; 
+        this.available = true;
+        id++; 
     }
 
-    public appointment(GregorianCalendar date) {
-        this.date = date;
-        id++; 
+    public User getPacient() {
+        return pacient;
+    }
+
+    public void setPacient(User pacient) {
+        this.pacient = pacient;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public GregorianCalendar getDate() {
@@ -55,6 +69,11 @@ public class appointment {
         sdf.setCalendar(calendar);
         String modDate = sdf.format(calendar.getTime());
         return modDate;
+    }
+
+    @Override
+    public int compareTo(appointment o) {
+        return date.compareTo(o.getDate());
     }
     
 }

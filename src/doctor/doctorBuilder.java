@@ -47,7 +47,7 @@ public void createName(String name) {
 
     @Override
     public void createSpeciality(speciality s) {
-        doctor.setS(s);
+        doctor.setSpec(s);
     }
 
     @Override
@@ -59,7 +59,7 @@ public void createName(String name) {
         if (doctor.getId() == 0) {
             msg += "El id no puede estar vacio ni ser igual a 0\n";
         }
-        if (doctor.getS() == null) {
+        if (doctor.getSpec() == null) {
             msg += "La especialidad no puede estar vacia";
         }
         if (!msg.equals("")) {

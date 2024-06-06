@@ -4,8 +4,7 @@
  */
 package View;
 
-import doctor.doctor;
-import java.util.ArrayList;
+
 
 /**
  *

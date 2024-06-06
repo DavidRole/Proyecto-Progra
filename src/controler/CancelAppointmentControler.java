@@ -5,25 +5,23 @@
 package controler;
 
 import citas.appointment;
-import doctor.doctor;
-import java.util.ArrayList;
+import citas.scheduleList;
 
 /**
  *
  * @author crist
  */
 public class CancelAppointmentControler {
-    private ArrayList<doctor> doctorList;
+    private scheduleList list;
 
-    public CancelAppointmentControler(ArrayList<doctor> doctorList) {
-        this.doctorList = doctorList;
+    public CancelAppointmentControler(scheduleList list) {
+        this.list = list;
     }
     
     public void deleteAppoitment(appointment appointment){
-        for (int i = 0; i < doctorList.size()-1; i++) {
-            if (doctorList.get(i) == appointment) {
-                doctorList.remove(i);
-            }
-        }
+        appointment temp = list.getAppointment(appointment);
+        //escribir la cita cancelada en la otra vara
+        temp.setAvailable(true);
+        temp.setPacient(null);
     }
 }

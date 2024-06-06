@@ -4,12 +4,10 @@
  */
 package View;
 
-import citas.appointment;
+
+import citas.scheduleList;
 import controler.CancelAppointmentControler;
-import doctor.doctor;
-import java.util.ArrayList;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -18,29 +16,19 @@ import javax.swing.table.DefaultTableModel;
 public class CancelAppointmentWindow extends javax.swing.JFrame {
 
     private CancelAppointmentControler controler;
-    private ArrayList<doctor> doctorList;
-    private DefaultTableModel dm;
+
+    public CancelAppointmentWindow() {
+    }
+    
+    
 
     /**
      * Creates new form CancelAppointmentWindow
      */
-    public CancelAppointmentWindow() {
+    public CancelAppointmentWindow(scheduleList list) {
         initComponents();
         setLocationRelativeTo(null);
-        doctorList = new ArrayList<>();
-        controler = new CancelAppointmentControler(doctorList);
-
-        //Se crea un modelo para manipular la tabla
-        dm = new DefaultTableModel();
-
-        //Establece las columnas
-        Object[] columnas = {"Doctor", "Especialidad", "Hora", "Fecha"};
-        dm.setColumnIdentifiers(columnas);
-        //Se indica que se puede seleccionar un elemento
-        tb_AppointmentsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tb_AppointmentsList.setDefaultEditor(Object.class, null);
-
-        tb_AppointmentsList.setModel(dm);
+        controler = new CancelAppointmentControler(list);
 
     }
 
@@ -75,7 +63,6 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tb_AppointmentsList);
-        tb_AppointmentsList.setColumnModel(dm);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 63, 480, 290));
 
