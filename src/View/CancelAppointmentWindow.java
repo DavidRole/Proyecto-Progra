@@ -18,6 +18,8 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
     private CancelAppointmentControler controler;
 
     public CancelAppointmentWindow() {
+        initComponents();
+        setLocationRelativeTo(null);
     }
     
     
