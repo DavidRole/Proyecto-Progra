@@ -47,10 +47,10 @@ public class ClientWindow extends javax.swing.JFrame {
         lb_password = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bt_singUp = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         bt_register = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -97,11 +97,6 @@ public class ClientWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bt_singUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 130, -1));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
-
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Si aún no tienes cuenta, puedes registrarte");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 240, 20));
 
         bt_register.setForeground(new java.awt.Color(0, 0, 0));
         bt_register.setText("Registrarse");
@@ -113,6 +108,15 @@ public class ClientWindow extends javax.swing.JFrame {
         getContentPane().add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, -1));
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Si aún no tienes cuenta, puedes registrarte");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 270, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6846089.jpg"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 300, 350));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 300, 360));
 
         pack();
@@ -183,8 +187,8 @@ public class ClientWindow extends javax.swing.JFrame {
     private javax.swing.JButton bt_singUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
