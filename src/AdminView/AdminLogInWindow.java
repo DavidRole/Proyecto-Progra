@@ -27,34 +27,91 @@ public class AdminLogInWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        pf_password = new javax.swing.JPasswordField();
+        lb_indication = new javax.swing.JLabel();
+        lb_password = new javax.swing.JLabel();
+        lb_title = new javax.swing.JLabel();
+        bt_register = new javax.swing.JButton();
+        lb_LogIn = new javax.swing.JLabel();
+        txt_Id = new javax.swing.JTextField();
+        bt_singUp = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 6, 90, 30));
+        pf_password.setBackground(new java.awt.Color(255, 255, 255));
+        pf_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pf_password.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(pf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 130, -1));
+
+        lb_indication.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lb_indication.setForeground(new java.awt.Color(0, 0, 0));
+        lb_indication.setText("ID");
+        jPanel1.add(lb_indication, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
+
+        lb_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lb_password.setForeground(new java.awt.Color(0, 0, 0));
+        lb_password.setText("Contraseña");
+        jPanel1.add(lb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+
+        lb_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_title.setForeground(new java.awt.Color(0, 0, 0));
+        lb_title.setText("Bienvenido al Administrador");
+        jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 230, 40));
+
+        bt_register.setForeground(new java.awt.Color(0, 0, 0));
+        bt_register.setText("Registrarse");
+        bt_register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registerMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 130, -1));
+
+        lb_LogIn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lb_LogIn.setForeground(new java.awt.Color(0, 0, 0));
+        lb_LogIn.setText("Inicio de Sesión");
+        jPanel1.add(lb_LogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 100, 30));
+
+        txt_Id.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_Id.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txt_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 130, -1));
+
+        bt_singUp.setForeground(new java.awt.Color(0, 0, 0));
+        bt_singUp.setText("Iniciar Sesión");
+        bt_singUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_singUpActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_singUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 130, -1));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6846089.jpg"))); // NOI18N
-        jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 410, 400));
+        jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 310));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_singUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_singUpActionPerformed
+        String id = txt_Id.getText();
+        String password = pf_password.getText();
+
+        
+    }//GEN-LAST:event_bt_singUpActionPerformed
+
+    private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new FormRegister(controlerForm).setVisible(true);
+//            }
+//        });
+    }//GEN-LAST:event_bt_registerMouseClicked
 
     /**
      * @param args the command line arguments
@@ -93,8 +150,15 @@ public class AdminLogInWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bt_register;
+    private javax.swing.JButton bt_singUp;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lb_LogIn;
     private javax.swing.JLabel lb_background;
+    private javax.swing.JLabel lb_indication;
+    private javax.swing.JLabel lb_password;
+    private javax.swing.JLabel lb_title;
+    private javax.swing.JPasswordField pf_password;
+    private javax.swing.JTextField txt_Id;
     // End of variables declaration//GEN-END:variables
 }
