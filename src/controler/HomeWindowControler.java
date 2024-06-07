@@ -4,10 +4,35 @@
  */
 package controler;
 
+import View.CancelAppointmentWindow;
+import View.HistoryAppointmentWindow;
+import View.scheduleAppointmentWindow;
+
 /**
  *
  * @author crist
  */
-public class HomeWindowControler {
+public class HomeWindowControler extends javax.swing.JFrame {
     
+    public void historyAction(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new HistoryAppointmentWindow().setVisible(true);
+            }
+        });
+    }
+    public void schedAction(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new scheduleAppointmentWindow().setVisible(true);
+            }
+        });
+    }
+    public void cancelApp(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CancelAppointmentWindow().setVisible(true);
+            }
+        });
+    }
 }
