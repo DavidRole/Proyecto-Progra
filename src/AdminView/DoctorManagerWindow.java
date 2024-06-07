@@ -15,6 +15,8 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
      */
     public DoctorManagerWindow() {
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**

@@ -35,7 +35,6 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         lb_indication = new javax.swing.JLabel();
         lb_password = new javax.swing.JLabel();
         lb_title = new javax.swing.JLabel();
-        bt_register = new javax.swing.JButton();
         lb_LogIn = new javax.swing.JLabel();
         txt_Id = new javax.swing.JTextField();
         bt_singUp = new javax.swing.JButton();
@@ -65,15 +64,6 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         lb_title.setForeground(new java.awt.Color(255, 255, 255));
         lb_title.setText("Bienvenido al Administrador");
         jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 240, 40));
-
-        bt_register.setForeground(new java.awt.Color(0, 0, 0));
-        bt_register.setText("Registrarse");
-        bt_register.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_registerMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 130, -1));
 
         lb_LogIn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lb_LogIn.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,14 +98,6 @@ public class AdminLogInWindow extends javax.swing.JFrame {
 
         controler.logIn(id, password);
     }//GEN-LAST:event_bt_singUpActionPerformed
-
-    private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FormRegister(controlerForm).setVisible(true);
-//            }
-//        });
-    }//GEN-LAST:event_bt_registerMouseClicked
 
     /**
      * @param args the command line arguments
@@ -154,7 +136,6 @@ public class AdminLogInWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_register;
     private javax.swing.JButton bt_singUp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lb_LogIn;

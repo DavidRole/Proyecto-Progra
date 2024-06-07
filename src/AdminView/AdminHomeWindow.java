@@ -4,11 +4,15 @@
  */
 package AdminView;
 
+import adminControlers.AdminHomeControler;
+
 /**
  *
  * @author darod
  */
 public class AdminHomeWindow extends javax.swing.JFrame {
+
+    private AdminHomeControler controler;
 
     /**
      * Creates new form AdminHomeWindow
@@ -16,6 +20,7 @@ public class AdminHomeWindow extends javax.swing.JFrame {
     public AdminHomeWindow() {
         initComponents();
         setLocationRelativeTo(null);
+        controler = new AdminHomeControler();
     }
 
     /**
@@ -44,9 +49,19 @@ public class AdminHomeWindow extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         bt_manageDoctors.setText("Gestionar Doctores");
+        bt_manageDoctors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_manageDoctorsActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_manageDoctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         bt_manageClients.setText("Gestionar Clientes");
+        bt_manageClients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_manageClientsActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_manageClients, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
@@ -56,6 +71,16 @@ public class AdminHomeWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_manageDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_manageDoctorsActionPerformed
+        controler.manegeWindow();
+
+    }//GEN-LAST:event_bt_manageDoctorsActionPerformed
+
+    private void bt_manageClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_manageClientsActionPerformed
+        controler.registerWindow();
+
+    }//GEN-LAST:event_bt_manageClientsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

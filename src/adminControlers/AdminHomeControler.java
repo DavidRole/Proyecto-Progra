@@ -6,6 +6,7 @@ package adminControlers;
 
 import AdminView.AdminLogInWindow;
 import AdminView.DoctorManagerWindow;
+import AdminView.DoctorRegisterWindow;
 
 
 /**
@@ -20,10 +21,10 @@ public class AdminHomeControler {
             }
         });
     }
-    public void adminLogInWindow(){
+    public void registerWindow(){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminLogInWindow().setVisible(true);
+                new DoctorRegisterWindow().setVisible(true);
             }
         });
     }
