@@ -48,17 +48,17 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         jPanel1.add(pf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 130, -1));
 
         lb_indication.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lb_indication.setForeground(new java.awt.Color(0, 0, 0));
+        lb_indication.setForeground(new java.awt.Color(255, 255, 255));
         lb_indication.setText("ID");
         jPanel1.add(lb_indication, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
 
         lb_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lb_password.setForeground(new java.awt.Color(0, 0, 0));
+        lb_password.setForeground(new java.awt.Color(255, 255, 255));
         lb_password.setText("Contraseña");
         jPanel1.add(lb_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
 
         lb_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lb_title.setForeground(new java.awt.Color(0, 0, 0));
+        lb_title.setForeground(new java.awt.Color(255, 255, 255));
         lb_title.setText("Bienvenido al Administrador");
         jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 230, 40));
 
@@ -72,7 +72,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         jPanel1.add(bt_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 130, -1));
 
         lb_LogIn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lb_LogIn.setForeground(new java.awt.Color(0, 0, 0));
+        lb_LogIn.setForeground(new java.awt.Color(255, 255, 255));
         lb_LogIn.setText("Inicio de Sesión");
         jPanel1.add(lb_LogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 100, 30));
 
@@ -90,7 +90,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         });
         jPanel1.add(bt_singUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 130, -1));
 
-        lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6846089.jpg"))); // NOI18N
+        lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 310));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
