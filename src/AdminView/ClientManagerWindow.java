@@ -4,21 +4,18 @@
  */
 package AdminView;
 
-import adminControlers.ManageDoctorsControler;
-
 /**
  *
  * @author darod
  */
-public class DoctorManagerWindow extends javax.swing.JFrame {
-    private ManageDoctorsControler controler;
+public class ClientManagerWindow extends javax.swing.JFrame {
+
     /**
      * Creates new form DoctorManagerWindow
      */
-    public DoctorManagerWindow() {
+    public ClientManagerWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        controler=new ManageDoctorsControler();
 
     }
 
@@ -33,6 +30,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
 
         bt_home = new javax.swing.JButton();
         bt_cancelAppointment = new javax.swing.JButton();
+        bt_addSchedule = new javax.swing.JButton();
         bt_removeSchedule = new javax.swing.JButton();
         bt_addDoctor = new javax.swing.JButton();
         bt_removeDoctor = new javax.swing.JButton();
@@ -63,6 +61,14 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         });
         getContentPane().add(bt_cancelAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, -1, -1));
 
+        bt_addSchedule.setText("Agregar Día Laboral");
+        bt_addSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_addScheduleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bt_addSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+
         bt_removeSchedule.setText("Eliminar Horario");
         bt_removeSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +77,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         });
         getContentPane().add(bt_removeSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
 
-        bt_addDoctor.setText("Agregar Cliente");
+        bt_addDoctor.setText("Agregar Doctor");
         bt_addDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_addDoctorActionPerformed(evt);
@@ -131,12 +137,16 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_cancelAppointmentActionPerformed
 
+    private void bt_addScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addScheduleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_addScheduleActionPerformed
+
     private void bt_removeScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeScheduleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_removeScheduleActionPerformed
 
     private void bt_addDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addDoctorActionPerformed
-        controler.registerWindow();
+        // TODO add your handling code here:
     }//GEN-LAST:event_bt_addDoctorActionPerformed
 
     private void bt_removeDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeDoctorActionPerformed
@@ -146,6 +156,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_addDoctor;
+    private javax.swing.JButton bt_addSchedule;
     private javax.swing.JButton bt_cancelAppointment;
     private javax.swing.JButton bt_home;
     private javax.swing.JButton bt_removeDoctor;

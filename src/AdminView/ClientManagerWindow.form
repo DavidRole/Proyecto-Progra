@@ -51,6 +51,19 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JButton" name="bt_addSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agregar D&#xed;a Laboral"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_addScheduleActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="420" y="330" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JButton" name="bt_removeSchedule">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Horario"/>
@@ -66,7 +79,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="bt_addDoctor">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Agregar Cliente"/>
+        <Property name="text" type="java.lang.String" value="Agregar Doctor"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_addDoctorActionPerformed"/>
