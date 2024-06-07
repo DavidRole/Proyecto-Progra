@@ -4,7 +4,7 @@
  */
 package View;
 
-import controler.HomeWindowControler;
+import controler.HomeWindowController;
 
 
 
@@ -14,7 +14,7 @@ import controler.HomeWindowControler;
  */
 public class HomeWindow extends javax.swing.JFrame {
     
-    private HomeWindowControler controler;
+    private HomeWindowController controler;
     
     /**
      * Creates new form HomeWindow
@@ -22,7 +22,7 @@ public class HomeWindow extends javax.swing.JFrame {
     public HomeWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        controler = new HomeWindowControler();
+        controler = new HomeWindowController();
     }
 
     /**

@@ -4,7 +4,7 @@
  */
 package View;
 
-import controler.FormRegisterControler;
+import controler.FormRegisterController;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  */
 public class FormRegister extends javax.swing.JFrame {
 
-    private FormRegisterControler controler;
+    private FormRegisterController controler;
 
     /**
      * Creates new form FormRegister
      */
-    public FormRegister(FormRegisterControler controler) {
+    public FormRegister(FormRegisterController controler) {
         this.controler = controler;
         initComponents();
         setLocationRelativeTo(null);

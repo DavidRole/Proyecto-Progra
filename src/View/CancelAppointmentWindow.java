@@ -6,7 +6,7 @@ package View;
 
 
 import citas.scheduleList;
-import controler.CancelAppointmentControler;
+import controler.CancelAppointmentController;
 
 
 /**
@@ -15,7 +15,7 @@ import controler.CancelAppointmentControler;
  */
 public class CancelAppointmentWindow extends javax.swing.JFrame {
 
-    private CancelAppointmentControler controler;
+    private CancelAppointmentController controler;
 
     public CancelAppointmentWindow() {
         initComponents();
@@ -30,7 +30,7 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
     public CancelAppointmentWindow(scheduleList list) {
         initComponents();
         setLocationRelativeTo(null);
-        controler = new CancelAppointmentControler(list);
+        controler = new CancelAppointmentController(list);
 
     }
 

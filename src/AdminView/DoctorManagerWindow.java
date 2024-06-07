@@ -4,21 +4,21 @@
  */
 package AdminView;
 
-import adminControlers.ManageDoctorsControler;
+import adminControlers.ManageDoctorsController;
 
 /**
  *
  * @author darod
  */
 public class DoctorManagerWindow extends javax.swing.JFrame {
-    private ManageDoctorsControler controler;
+    private ManageDoctorsController controler;
     /**
      * Creates new form DoctorManagerWindow
      */
     public DoctorManagerWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        controler=new ManageDoctorsControler();
+        controler=new ManageDoctorsController();
 
     }
 
@@ -90,7 +90,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         lb_docs.setBackground(new java.awt.Color(255, 255, 255));
         lb_docs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lb_docs.setForeground(new java.awt.Color(255, 255, 255));
-        lb_docs.setText("Clientes");
+        lb_docs.setText("Doctores");
         getContentPane().add(lb_docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 80, 30));
 
         lb_appointments.setBackground(new java.awt.Color(255, 255, 255));

@@ -4,9 +4,9 @@
  */
 package View;
 
-import controler.ClientWindowControler;
-import controler.FormRegisterControler;
-import controler.HomeWindowControler;
+import controler.ClientWindowController;
+import controler.FormRegisterController;
+import controler.HomeWindowController;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class ClientWindow extends javax.swing.JFrame {
 
-    private ClientWindowControler controler;
-    private FormRegisterControler controlerForm;
+    private ClientWindowController controler;
+    private FormRegisterController controlerForm;
 
     /**
      * Creates new form ClientWindow
@@ -24,8 +24,8 @@ public class ClientWindow extends javax.swing.JFrame {
     public ClientWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        controlerForm = new FormRegisterControler();
-        controler = new ClientWindowControler(controlerForm);
+        controlerForm = new FormRegisterController();
+        controler = new ClientWindowController(controlerForm);
         
     }
 

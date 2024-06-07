@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author crist
  */
-public class AdminLogInControler {
+public class AdminLogInController {
 
     private final String ID = "10";
     private final String PASSWORD = "1234";

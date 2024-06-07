@@ -4,21 +4,21 @@
  */
 package AdminView;
 
-import adminControlers.AdminLogInControler;
+import adminControlers.AdminLogInController;
 
 /**
  *
  * @author darod
  */
 public class AdminLogInWindow extends javax.swing.JFrame {
-    private AdminLogInControler controler;
+    private AdminLogInController controler;
     /**
      * Creates new form AdminSignInWindow
      */
     public AdminLogInWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        controler = new AdminLogInControler();
+        controler = new AdminLogInController();
     }
 
     /**

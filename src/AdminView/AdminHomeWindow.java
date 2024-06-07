@@ -4,7 +4,7 @@
  */
 package AdminView;
 
-import adminControlers.AdminHomeControler;
+import adminControlers.AdminHomeController;
 
 /**
  *
@@ -12,7 +12,7 @@ import adminControlers.AdminHomeControler;
  */
 public class AdminHomeWindow extends javax.swing.JFrame {
 
-    private AdminHomeControler controler;
+    private AdminHomeController controler;
 
     /**
      * Creates new form AdminHomeWindow
@@ -20,7 +20,7 @@ public class AdminHomeWindow extends javax.swing.JFrame {
     public AdminHomeWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        controler = new AdminHomeControler();
+        controler = new AdminHomeController();
     }
 
     /**

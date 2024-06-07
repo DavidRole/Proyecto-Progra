@@ -29,17 +29,10 @@ public class ClientManagerWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         bt_home = new javax.swing.JButton();
-        bt_cancelAppointment = new javax.swing.JButton();
-        bt_addSchedule = new javax.swing.JButton();
-        bt_removeSchedule = new javax.swing.JButton();
-        bt_addDoctor = new javax.swing.JButton();
-        bt_removeDoctor = new javax.swing.JButton();
+        bt_askClient = new javax.swing.JButton();
         lb_docs = new javax.swing.JLabel();
-        lb_appointments = new javax.swing.JLabel();
         jl_doctorList = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
-        jl_schedule = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,59 +44,21 @@ public class ClientManagerWindow extends javax.swing.JFrame {
                 bt_homeActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, -1, -1));
+        getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
 
-        bt_cancelAppointment.setText("Cancelar Cita");
-        bt_cancelAppointment.addActionListener(new java.awt.event.ActionListener() {
+        bt_askClient.setText("Consultar Cliente");
+        bt_askClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cancelAppointmentActionPerformed(evt);
+                bt_askClientActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_cancelAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, -1, -1));
-
-        bt_addSchedule.setText("Agregar Día Laboral");
-        bt_addSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_addScheduleActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_addSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
-
-        bt_removeSchedule.setText("Eliminar Horario");
-        bt_removeSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_removeScheduleActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_removeSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
-
-        bt_addDoctor.setText("Agregar Doctor");
-        bt_addDoctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_addDoctorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_addDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 120, -1));
-
-        bt_removeDoctor.setText("Eliminar Cliente");
-        bt_removeDoctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_removeDoctorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_removeDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
+        getContentPane().add(bt_askClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 130, -1));
 
         lb_docs.setBackground(new java.awt.Color(255, 255, 255));
         lb_docs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lb_docs.setForeground(new java.awt.Color(255, 255, 255));
         lb_docs.setText("Clientes");
-        getContentPane().add(lb_docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 80, 30));
-
-        lb_appointments.setBackground(new java.awt.Color(255, 255, 255));
-        lb_appointments.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lb_appointments.setForeground(new java.awt.Color(255, 255, 255));
-        lb_appointments.setText("Citas Agendadas");
-        getContentPane().add(lb_appointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
+        getContentPane().add(lb_docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 70, 30));
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -114,17 +69,8 @@ public class ClientManagerWindow extends javax.swing.JFrame {
 
         getContentPane().add(jl_doctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 260));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jl_schedule.setViewportView(jList1);
-
-        getContentPane().add(jl_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 300, 260));
-
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
-        getContentPane().add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 370));
+        getContentPane().add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,39 +79,16 @@ public class ClientManagerWindow extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_bt_homeActionPerformed
 
-    private void bt_cancelAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelAppointmentActionPerformed
+    private void bt_askClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_askClientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bt_cancelAppointmentActionPerformed
-
-    private void bt_addScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addScheduleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_addScheduleActionPerformed
-
-    private void bt_removeScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeScheduleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_removeScheduleActionPerformed
-
-    private void bt_addDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addDoctorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_addDoctorActionPerformed
-
-    private void bt_removeDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeDoctorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_removeDoctorActionPerformed
+    }//GEN-LAST:event_bt_askClientActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_addDoctor;
-    private javax.swing.JButton bt_addSchedule;
-    private javax.swing.JButton bt_cancelAppointment;
+    private javax.swing.JButton bt_askClient;
     private javax.swing.JButton bt_home;
-    private javax.swing.JButton bt_removeDoctor;
-    private javax.swing.JButton bt_removeSchedule;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jl_doctorList;
-    private javax.swing.JScrollPane jl_schedule;
-    private javax.swing.JLabel lb_appointments;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_docs;
     // End of variables declaration//GEN-END:variables
