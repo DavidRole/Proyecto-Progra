@@ -107,11 +107,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_singUpActionPerformed
 
     private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FormRegister(controlerForm).setVisible(true);
-//            }
-//        });
+
     }//GEN-LAST:event_bt_registerMouseClicked
 
     /**
