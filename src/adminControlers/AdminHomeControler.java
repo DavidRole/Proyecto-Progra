@@ -5,8 +5,8 @@
 package adminControlers;
 
 import AdminView.AdminLogInWindow;
-import AdminView.ManageDoctorsWindow;
-import View.HistoryAppointmentWindow;
+import AdminView.DoctorManagerWindow;
+
 
 /**
  *
@@ -16,7 +16,7 @@ public class AdminHomeControler {
     public void manegeWindow(){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageDoctorsWindow().setVisible(true);
+                new DoctorManagerWindow().setVisible(true);
             }
         });
     }
