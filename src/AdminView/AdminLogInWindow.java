@@ -4,18 +4,21 @@
  */
 package AdminView;
 
+import adminControlers.AdminLogInControler;
+
 /**
  *
  * @author darod
  */
 public class AdminLogInWindow extends javax.swing.JFrame {
-
+    private AdminLogInControler controler;
     /**
      * Creates new form AdminSignInWindow
      */
     public AdminLogInWindow() {
         initComponents();
         setLocationRelativeTo(null);
+        controler = new AdminLogInControler();
     }
 
     /**
@@ -61,7 +64,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         lb_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lb_title.setForeground(new java.awt.Color(255, 255, 255));
         lb_title.setText("Bienvenido al Administrador");
-        jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 230, 40));
+        jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 240, 40));
 
         bt_register.setForeground(new java.awt.Color(0, 0, 0));
         bt_register.setText("Registrarse");
@@ -103,7 +106,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         String id = txt_Id.getText();
         String password = pf_password.getText();
 
-        
+        controler.logIn(id, password);
     }//GEN-LAST:event_bt_singUpActionPerformed
 
     private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
