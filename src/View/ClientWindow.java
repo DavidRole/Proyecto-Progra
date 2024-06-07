@@ -127,11 +127,7 @@ public class ClientWindow extends javax.swing.JFrame {
         String password = pf_password.getText();
 
         if (controler.logIn(id, password)) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new HomeWindow().setVisible(true);
-                }
-            });
+            controler.homeWindow();
         }else{
             JOptionPane.showMessageDialog(null, "Contraseña o Cedula incorrecta digitela de nuevo");
         }
@@ -139,11 +135,7 @@ public class ClientWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_singUpActionPerformed
 
     private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormRegister(controlerForm).setVisible(true);
-            }
-        });
+        controler.registerWindow(controlerForm);
     }//GEN-LAST:event_bt_registerMouseClicked
 
     /**

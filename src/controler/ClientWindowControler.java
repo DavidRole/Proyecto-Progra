@@ -5,6 +5,9 @@
 package controler;
 
 import Usuario.User;
+import View.ClientWindow;
+import View.FormRegister;
+import View.HomeWindow;
 import java.util.ArrayList;
 
 /**
@@ -26,6 +29,18 @@ public class ClientWindowControler {
         }
         return false;
     }
-    
-    
+    public void homeWindow(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new HomeWindow().setVisible(true);
+            }
+        });
+    }
+    public void registerWindow(FormRegisterControler controler){
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FormRegister(controler).setVisible(true);
+            }
+        });
+    }
 }
