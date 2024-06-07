@@ -4,10 +4,19 @@
  */
 package adminControlers;
 
+import AdminView.DoctorRegisterWindow;
+
 /**
  *
  * @author crist
  */
 public class ManageDoctorsControler {
     
+    public void registerWindow(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new DoctorRegisterWindow().setVisible(true);
+            }
+        });
+    }
 }

@@ -4,18 +4,21 @@
  */
 package AdminView;
 
+import adminControlers.ManageDoctorsControler;
+
 /**
  *
  * @author darod
  */
 public class DoctorManagerWindow extends javax.swing.JFrame {
-
+    private ManageDoctorsControler controler;
     /**
      * Creates new form DoctorManagerWindow
      */
     public DoctorManagerWindow() {
         initComponents();
         setLocationRelativeTo(null);
+        controler=new ManageDoctorsControler();
 
     }
 
@@ -146,7 +149,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_removeScheduleActionPerformed
 
     private void bt_addDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addDoctorActionPerformed
-        // TODO add your handling code here:
+        controler.registerWindow();
     }//GEN-LAST:event_bt_addDoctorActionPerformed
 
     private void bt_removeDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeDoctorActionPerformed

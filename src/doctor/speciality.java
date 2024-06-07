@@ -18,5 +18,5 @@ public enum speciality {
     oncologia, 
     pediatria, 
     gastroenterologia, 
-    anastesiologia
+    anastesiologia;
 }

@@ -4,12 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/adminControlers/ManageDoctorsControler.java</file>
+            <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/doctor/speciality.java</file>
             <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/adminControlers/AdminHomeControler.java</file>
+            <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/AdminView/AdminHomeWindow.java</file>
             <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/adminControlers/AdminLogInControler.java</file>
             <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/AdminView/AdminLogInWindow.java</file>
-            <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/View/ClientWindow.java</file>
-            <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/controler/HomeWindowControler.java</file>
-            <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/Usuario/User.java</file>
+            <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/AdminView/DoctorManagerWindow.java</file>
             <file>file:/C:/Users/crist/OneDrive/Escritorio/UCR%202024/Progra/Proyecto-Progra/src/AdminView/DoctorRegisterWindow.java</file>
         </group>
     </open-files>

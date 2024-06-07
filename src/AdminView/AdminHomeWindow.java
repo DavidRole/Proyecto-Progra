@@ -78,7 +78,6 @@ public class AdminHomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_manageDoctorsActionPerformed
 
     private void bt_manageClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_manageClientsActionPerformed
-        controler.registerWindow();
 
     }//GEN-LAST:event_bt_manageClientsActionPerformed
 
