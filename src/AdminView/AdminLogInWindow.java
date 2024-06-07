@@ -15,6 +15,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
      */
     public AdminLogInWindow() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
