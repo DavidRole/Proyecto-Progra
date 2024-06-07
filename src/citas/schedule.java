@@ -6,16 +6,17 @@ package citas;
 
 
 import doctor.doctor;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Comparator;
+
 import java.util.GregorianCalendar;
 
 /**
  *
  * @author david
  */
-public class schedule {
+public class schedule implements Serializable{
     
     private doctor doctor;
     private final ArrayList<appointment> list;

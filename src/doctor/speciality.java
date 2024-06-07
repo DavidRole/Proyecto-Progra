@@ -4,11 +4,13 @@
  */
 package doctor;
 
+import java.io.Serializable;
+
 /**
  *
  * @author david
  */
-public enum speciality {
+public enum speciality implements Serializable{
     cardiologia, 
     radiologia, 
     endocrinologia, 

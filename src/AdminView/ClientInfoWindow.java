@@ -4,17 +4,30 @@
  */
 package AdminView;
 
+import Storage.Storage;
+import Usuario.User;
+import citas.appointment;
+
 /**
  *
  * @author darod
  */
 public class ClientInfoWindow extends javax.swing.JFrame {
-
+    private User user;
+    private Storage storage;
     /**
      * Creates new form ClientInfoWindow
+     * @param user user info to show
+     * @param storage Where we get the list to show appointments
      */
-    public ClientInfoWindow() {
+    public ClientInfoWindow(User user, Storage storage) {
         initComponents();
+        setLocationRelativeTo(null);
+        this.user=user;
+        this.storage=storage;
+        ta_clientInfo.setText(this.user.toString());
+        jl_appointments.setListData((String[]) this.storage.getActiveAppointments(this.user.getId()).toArray());
+        bt_deleteAppointment.setEnabled(false);
     }
 
     /**
@@ -27,14 +40,14 @@ public class ClientInfoWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        ta_clientInfo = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        scroll1 = new javax.swing.JScrollPane();
+        ta_clientInfo = new javax.swing.JTextArea();
         bt_enable = new javax.swing.JButton();
         bt_disableClient = new javax.swing.JButton();
         bt_addAppointment = new javax.swing.JButton();
         bt_deleteAppointment = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jl_appointments = new javax.swing.JList<>();
         lb_title = new javax.swing.JLabel();
         lb_background = new javax.swing.JLabel();
 
@@ -43,12 +56,12 @@ public class ClientInfoWindow extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        ta_clientInfo.setViewportView(jTextArea1);
+        ta_clientInfo.setEditable(false);
+        ta_clientInfo.setColumns(20);
+        ta_clientInfo.setRows(5);
+        scroll1.setViewportView(ta_clientInfo);
 
-        jPanel1.add(ta_clientInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 330, 110));
+        jPanel1.add(scroll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 330, 110));
 
         bt_enable.setText("Habilitar Cliente");
         jPanel1.add(bt_enable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
@@ -57,23 +70,30 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         jPanel1.add(bt_disableClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
 
         bt_addAppointment.setText("Agregar Cita");
-        jPanel1.add(bt_addAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
+        jPanel1.add(bt_addAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
 
         bt_deleteAppointment.setText("Eliminar Cita");
         jPanel1.add(bt_deleteAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, -1, -1));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jl_appointments.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jl_appointments.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jl_appointmentsFocusGained(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jl_appointments);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 310, 110));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 320, 110));
 
-        lb_title.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lb_title.setBackground(new java.awt.Color(255, 255, 255));
+        lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lb_title.setForeground(new java.awt.Color(255, 255, 255));
         lb_title.setText("Información del Cliente");
-        jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
+        jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 220));
@@ -83,18 +103,22 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jl_appointmentsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jl_appointmentsFocusGained
+        bt_deleteAppointment.setEnabled(true);
+    }//GEN-LAST:event_jl_appointmentsFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_addAppointment;
     private javax.swing.JButton bt_deleteAppointment;
     private javax.swing.JButton bt_disableClient;
     private javax.swing.JButton bt_enable;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList<String> jl_appointments;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_title;
-    private javax.swing.JScrollPane ta_clientInfo;
+    private javax.swing.JScrollPane scroll1;
+    private javax.swing.JTextArea ta_clientInfo;
     // End of variables declaration//GEN-END:variables
 }

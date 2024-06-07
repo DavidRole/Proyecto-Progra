@@ -4,6 +4,7 @@
  */
 package AdminView;
 
+import Storage.Storage;
 import adminControlers.AdminHomeController;
 
 /**
@@ -12,15 +13,17 @@ import adminControlers.AdminHomeController;
  */
 public class AdminHomeWindow extends javax.swing.JFrame {
 
-    private AdminHomeController controler;
+    private Storage storage;
+    private AdminHomeController controller;
 
     /**
      * Creates new form AdminHomeWindow
      */
-    public AdminHomeWindow() {
+    public AdminHomeWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
-        controler = new AdminHomeController();
+        controller = new AdminHomeController();
+        this.storage = storage;
     }
 
     /**
@@ -36,6 +39,7 @@ public class AdminHomeWindow extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bt_manageDoctors = new javax.swing.JButton();
         bt_manageClients = new javax.swing.JButton();
+        bt_exit = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,6 +68,14 @@ public class AdminHomeWindow extends javax.swing.JFrame {
         });
         jPanel1.add(bt_manageClients, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
+        bt_exit.setText("Salir");
+        bt_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_exitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 90, -1));
+
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 299));
 
@@ -73,16 +85,20 @@ public class AdminHomeWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_manageDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_manageDoctorsActionPerformed
-        controler.manegeWindow();
-
+        controller.DoctorManagerWindow(storage);
     }//GEN-LAST:event_bt_manageDoctorsActionPerformed
 
     private void bt_manageClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_manageClientsActionPerformed
-
+        controller.ClientManagerWindow(storage);
     }//GEN-LAST:event_bt_manageClientsActionPerformed
+
+    private void bt_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_exitActionPerformed
+        dispose();
+    }//GEN-LAST:event_bt_exitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_exit;
     private javax.swing.JButton bt_manageClients;
     private javax.swing.JButton bt_manageDoctors;
     private javax.swing.JLabel jLabel1;

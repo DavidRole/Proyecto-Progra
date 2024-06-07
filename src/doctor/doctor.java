@@ -4,15 +4,15 @@
  */
 package doctor;
 
-import citas.schedule;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
+
+import java.io.Serializable;
+
 
 /**
  *
  * @author david
  */
-public class doctor {
+public class doctor implements Serializable{
 
     private int id;
     private String name;

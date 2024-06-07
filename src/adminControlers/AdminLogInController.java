@@ -5,25 +5,28 @@
 package adminControlers;
 
 import AdminView.AdminHomeWindow;
-import AdminView.AdminLogInWindow;
-import doctor.doctor;
-import java.util.ArrayList;
+import Storage.Storage;
+
 
 /**
  *
  * @author crist
  */
 public class AdminLogInController {
+    private Storage storage;
+    private final String ID = "Healer";
+    private final String PASSWORD = "0000";
 
-    private final String ID = "10";
-    private final String PASSWORD = "1234";
+    public AdminLogInController(Storage storage) {
+        this.storage = storage;
+    }
 
     public boolean logIn(String id, String password) {
 
         if (ID.equals(id) && password.equals(PASSWORD)) {
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminHomeWindow().setVisible(true);
+                new AdminHomeWindow(storage).setVisible(true);
             }
         });
             return true;

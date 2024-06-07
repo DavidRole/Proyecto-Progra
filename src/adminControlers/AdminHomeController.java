@@ -4,7 +4,9 @@
  */
 package adminControlers;
 
+import AdminView.ClientManagerWindow;
 import AdminView.DoctorManagerWindow;
+import Storage.Storage;
 
 
 /**
@@ -12,10 +14,17 @@ import AdminView.DoctorManagerWindow;
  * @author crist
  */
 public class AdminHomeController {
-    public void manegeWindow(){
+    public void DoctorManagerWindow(Storage storage){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DoctorManagerWindow().setVisible(true);
+            }
+        });
+    }
+    public void ClientManagerWindow(Storage storage){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ClientManagerWindow(storage).setVisible(true);
             }
         });
     }

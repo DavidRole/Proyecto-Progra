@@ -7,12 +7,14 @@ package Usuario;
 import java.util.GregorianCalendar;
 import Usuario.AbstractBuilder;
 import Usuario.UserException;
+import java.io.Serializable;
+
 
 /**
  *
  * @author emanu
  */
-public class User {
+public class User implements Serializable{
     private String id;
     private String email;
     private String password;
@@ -103,5 +105,11 @@ public class User {
     @Override
     public String toString() {
         return "Usuario{" + "id=" + id + ", email=" + email + ", password=" + password + ", birthdayDate=" + birthdayDate + ", name=" + name + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + '}';
+    }
+
+    public Object[] toRow() {
+        Object[] data = {name, lastName, id};
+        
+        return data;
     }
 }

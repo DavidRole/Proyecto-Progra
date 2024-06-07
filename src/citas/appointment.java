@@ -5,6 +5,7 @@
 package citas;
 
 import Usuario.User;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
@@ -12,7 +13,7 @@ import java.util.GregorianCalendar;
  *
  * @author david
  */
-public class appointment implements Comparable<appointment>{
+public class appointment implements Comparable<appointment>, Serializable{
 
     private User pacient; 
     private GregorianCalendar date;

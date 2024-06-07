@@ -4,6 +4,7 @@
  */
 package AdminView;
 
+import Storage.Storage;
 import adminControlers.AdminLogInController;
 
 /**
@@ -11,14 +12,19 @@ import adminControlers.AdminLogInController;
  * @author darod
  */
 public class AdminLogInWindow extends javax.swing.JFrame {
+
+    private static Storage storage;
     private AdminLogInController controler;
+
     /**
      * Creates new form AdminSignInWindow
      */
-    public AdminLogInWindow() {
+    public AdminLogInWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
-        controler = new AdminLogInController();
+        this.storage = storage;
+        storage.readAll();
+        controler = new AdminLogInController(this.storage);
     }
 
     /**
@@ -130,7 +136,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminLogInWindow().setVisible(true);
+                new AdminLogInWindow(storage).setVisible(true);
             }
         });
     }

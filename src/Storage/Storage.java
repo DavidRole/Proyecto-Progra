@@ -41,7 +41,21 @@ public class Storage {
  *
  * @author Usuario
  */
-    public void doctorReader() {
+    public synchronized void readAll(){
+        doctorReader();
+        clientReader();
+        scheduleReader();
+        cancelReader();
+    }
+    
+    public synchronized void writeAll(){
+        doctorWriter();
+        clientWriter();
+        scheduleWriter();
+        cancelWriter();
+    }
+    
+    public synchronized void doctorReader() {
          
         
         try {
@@ -79,7 +93,7 @@ public class Storage {
         }
     }
     
-    public void doctorWriter(){
+    public synchronized void doctorWriter(){
         //Codigo escritura
 
         try { 
@@ -102,7 +116,7 @@ public class Storage {
         }
     }
     
-    public void clientReader() {
+    public synchronized void clientReader() {
         
         try {
             //Codigo lectura
@@ -139,7 +153,7 @@ public class Storage {
         }
     }
     
-    public void clientWriter(){
+    public synchronized void clientWriter(){
         //Codigo escritura 
         try { 
             FileOutputStream fileout = new FileOutputStream(clientsFile);
@@ -161,7 +175,7 @@ public class Storage {
         }
     }
     
-    public void scheduleReader() {
+    public synchronized void scheduleReader() {
          
         
         try {
@@ -199,7 +213,7 @@ public class Storage {
         }
     }
     
-    public void scheduleWriter(){
+    public synchronized void scheduleWriter(){
         //Codigo escritura 
         try { 
             FileOutputStream fileout = new FileOutputStream(scheduleFile);
@@ -221,7 +235,7 @@ public class Storage {
         }
     }
     
-    public void cancelReader() {
+    public synchronized void cancelReader() {
          
         
         try {
@@ -259,7 +273,7 @@ public class Storage {
         }
     }
     
-    public void cancelWriter(){
+    public synchronized void cancelWriter(){
         //Codigo escritura 
         try { 
             FileOutputStream fileout = new FileOutputStream(canceledFile);
@@ -281,7 +295,7 @@ public class Storage {
         }
     }
     
-    public ArrayList<appointment> getActiveAppointments(String id){
+    public synchronized ArrayList<appointment> getActiveAppointments(String id){
         ArrayList<appointment> activeAppointments = new ArrayList<>();
         appointment temp = null;
         
@@ -293,7 +307,7 @@ public class Storage {
         return activeAppointments;
     }
     
-    public appointment getAppointment(appointment ap){
+    public synchronized appointment getAppointment(appointment ap){
         appointment temp = null;
         
         for (schedule schedule1 : schedules) {
@@ -303,13 +317,33 @@ public class Storage {
         return temp;
     }
     
-    public schedule getSchedulePerDoctor(int id){
+    public synchronized schedule getSchedulePerDoctor(int id){
         for (schedule schedule1 : schedules) {
             if(schedule1.getDoctor().getId() == id){
                 return schedule1;
             }
         }
         return null;// cambiar por exception TALVEZ
+    }
+
+    public synchronized ArrayList<doctor> getDoctors() {
+        return doctors;
+    }
+
+    public synchronized ArrayList<User> getClients() {
+        return clients;
+    }
+
+    public synchronized ArrayList<schedule> getSchedules() {
+        return schedules;
+    }
+
+    public synchronized ArrayList<appointment> getCanceled() {
+        return canceled;
+    }
+
+    public synchronized ObjectInputStream getInput() {
+        return input;
     }
     
     
