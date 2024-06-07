@@ -30,9 +30,9 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         lb_title = new javax.swing.JLabel();
         lb_name = new javax.swing.JLabel();
         lb_id = new javax.swing.JLabel();
+        lb_spec = new javax.swing.JLabel();
         txt_name = new javax.swing.JTextField();
         txt_id = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         cb_speciality = new javax.swing.JComboBox<>();
         bt_registerDoc = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
@@ -42,22 +42,26 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lb_title.setBackground(new java.awt.Color(255, 255, 255));
         lb_title.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_title.setText("Formulario de Registro de Doctores");
         jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
+        lb_name.setBackground(new java.awt.Color(255, 255, 255));
         lb_name.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lb_name.setText("Nombre");
         jPanel1.add(lb_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, 20));
 
+        lb_id.setBackground(new java.awt.Color(255, 255, 255));
         lb_id.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lb_id.setText("ID del Empleado");
         jPanel1.add(lb_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+
+        lb_spec.setBackground(new java.awt.Color(255, 255, 255));
+        lb_spec.setText("Especialidad");
+        jPanel1.add(lb_spec, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
         jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 160, -1));
         jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 160, -1));
-
-        jLabel1.setText("Especialidad");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
 
         cb_speciality.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(cb_speciality, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 160, -1));
@@ -77,11 +81,11 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_registerDoc;
     private javax.swing.JComboBox<String> cb_speciality;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_id;
     private javax.swing.JLabel lb_name;
+    private javax.swing.JLabel lb_spec;
     private javax.swing.JLabel lb_title;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_name;
