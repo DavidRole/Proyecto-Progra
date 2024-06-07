@@ -31,6 +31,7 @@ public class AdminHomeWindow extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bt_manageDoctors = new javax.swing.JButton();
         bt_manageClients = new javax.swing.JButton();
+        bt_exit = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,6 +50,9 @@ public class AdminHomeWindow extends javax.swing.JFrame {
         bt_manageClients.setText("Gestionar Clientes");
         jPanel1.add(bt_manageClients, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
+        bt_exit.setText("Salir");
+        jPanel1.add(bt_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 230, 90, -1));
+
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 299));
 
@@ -59,6 +63,7 @@ public class AdminHomeWindow extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_exit;
     private javax.swing.JButton bt_manageClients;
     private javax.swing.JButton bt_manageDoctors;
     private javax.swing.JLabel jLabel1;

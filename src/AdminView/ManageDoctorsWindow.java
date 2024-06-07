@@ -71,7 +71,7 @@ public class ManageDoctorsWindow extends javax.swing.JFrame {
                 bt_addScheduleActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_addSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+        jPanel1.add(bt_addSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 150, -1));
 
         bt_removeSchedule.setText("Eliminar Horario");
         bt_removeSchedule.addActionListener(new java.awt.event.ActionListener() {
