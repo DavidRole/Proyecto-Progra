@@ -12,14 +12,13 @@ import java.util.ArrayList;
  */
 public class scheduleList {
     private ArrayList<schedule> schedules;
-    private ArrayList<appointment> activeAppointments;
 
     public scheduleList(ArrayList<schedule> schedules) {
         this.schedules = schedules;
     }
     
     public ArrayList<appointment> getActiveAppointments(String id){
-        activeAppointments = new ArrayList<>();
+        ArrayList<appointment> activeAppointments = new ArrayList<>();
         appointment temp = null;
         
         for (schedule schedule1 : schedules) {
@@ -30,7 +29,7 @@ public class scheduleList {
         return activeAppointments;
     }
     
-    public appointment getAppointment( appointment ap){
+    public appointment getAppointment(appointment ap){
         appointment temp = null;
         
         for (schedule schedule1 : schedules) {

@@ -18,9 +18,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -30,12 +28,12 @@ public class Storage {
     ArrayList<doctor> doctors = new ArrayList<>();
     ArrayList<User> clients = new ArrayList<>(); 
     ArrayList<schedule> schedules = new ArrayList<>();
-    ArrayList<appointment> cancels = new ArrayList<>();
+    ArrayList<appointment> canceled = new ArrayList<>();
     
     File doctorsFile = new File("doctors.dat"); 
     File clientsFile = new File("clients.dat"); 
     File scheduleFile = new File("schedule.dat"); 
-    File cancelFile = new File("cancel.dat"); 
+    File canceledFile = new File("cancel.dat"); 
     
     ObjectInputStream input = null; 
     ObjectOutputStream output = null;
@@ -80,6 +78,7 @@ public class Storage {
             
         }
     }
+    
     public void doctorWriter(){
         //Codigo escritura
 
@@ -102,6 +101,7 @@ public class Storage {
             }
         }
     }
+    
     public void clientReader() {
         
         try {
@@ -138,6 +138,7 @@ public class Storage {
             
         }
     }
+    
     public void clientWriter(){
         //Codigo escritura 
         try { 
@@ -159,6 +160,7 @@ public class Storage {
             }
         }
     }
+    
     public void scheduleReader() {
          
         
@@ -196,6 +198,7 @@ public class Storage {
             
         }
     }
+    
     public void scheduleWriter(){
         //Codigo escritura 
         try { 
@@ -217,12 +220,13 @@ public class Storage {
             }
         }
     }
+    
     public void cancelReader() {
          
         
         try {
             //Codigo lectura
-            FileInputStream fileInput = new FileInputStream(cancelFile);
+            FileInputStream fileInput = new FileInputStream(canceledFile);
             input = new ObjectInputStream(fileInput);
             Object object = input.readObject();
             appointment appointment; 
@@ -230,7 +234,7 @@ public class Storage {
             while(object != null){
                 appointment = (appointment) object; 
                 System.out.println(appointment);
-                cancels.add(appointment); 
+                canceled.add(appointment); 
                 object = input.readObject();
             }
             
@@ -254,13 +258,14 @@ public class Storage {
             
         }
     }
+    
     public void cancelWriter(){
         //Codigo escritura 
         try { 
-            FileOutputStream fileout = new FileOutputStream(cancelFile);
+            FileOutputStream fileout = new FileOutputStream(canceledFile);
             output = new ObjectOutputStream(fileout); 
             
-            for (appointment c : cancels) {
+            for (appointment c : canceled) {
                 output.writeObject(c);
             }
         } catch (FileNotFoundException ex) {
@@ -275,6 +280,39 @@ public class Storage {
             }
         }
     }
+    
+    public ArrayList<appointment> getActiveAppointments(String id){
+        ArrayList<appointment> activeAppointments = new ArrayList<>();
+        appointment temp = null;
+        
+        for (schedule schedule1 : schedules) {
+            temp = schedule1.getAppointment(id);
+            activeAppointments.add(temp);
+        }
+        
+        return activeAppointments;
+    }
+    
+    public appointment getAppointment(appointment ap){
+        appointment temp = null;
+        
+        for (schedule schedule1 : schedules) {
+            schedule1.getAppointment(ap);
+        }
+        
+        return temp;
+    }
+    
+    public schedule getSchedulePerDoctor(int id){
+        for (schedule schedule1 : schedules) {
+            if(schedule1.getDoctor().getId() == id){
+                return schedule1;
+            }
+        }
+        return null;// cambiar por exception TALVEZ
+    }
+    
+    
 }
 
 

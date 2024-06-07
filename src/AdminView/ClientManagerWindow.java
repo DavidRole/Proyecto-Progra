@@ -31,8 +31,8 @@ public class ClientManagerWindow extends javax.swing.JFrame {
         bt_home = new javax.swing.JButton();
         bt_askClient = new javax.swing.JButton();
         lb_docs = new javax.swing.JLabel();
-        jl_doctorList = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        tb_users = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +52,7 @@ public class ClientManagerWindow extends javax.swing.JFrame {
                 bt_askClientActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_askClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 130, -1));
+        getContentPane().add(bt_askClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 160, -1));
 
         lb_docs.setBackground(new java.awt.Color(255, 255, 255));
         lb_docs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -60,14 +60,20 @@ public class ClientManagerWindow extends javax.swing.JFrame {
         lb_docs.setText("Clientes");
         getContentPane().add(lb_docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 70, 30));
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jl_doctorList.setViewportView(jList2);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tb_users.setViewportView(jTable1);
 
-        getContentPane().add(jl_doctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 260));
+        getContentPane().add(tb_users, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 60, 520, 260));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         getContentPane().add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 370));
@@ -87,9 +93,9 @@ public class ClientManagerWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_askClient;
     private javax.swing.JButton bt_home;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JScrollPane jl_doctorList;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_docs;
+    private javax.swing.JScrollPane tb_users;
     // End of variables declaration//GEN-END:variables
 }
