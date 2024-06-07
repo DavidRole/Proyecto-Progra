@@ -116,7 +116,7 @@ public class ManageDoctorsWindow extends javax.swing.JFrame {
         });
         jl_doctorList.setViewportView(jList2);
 
-        jPanel1.add(jl_doctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 250));
+        jPanel1.add(jl_doctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 260));
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
