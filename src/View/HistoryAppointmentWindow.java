@@ -28,30 +28,15 @@ public class HistoryAppointmentWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_AppointmentsList = new javax.swing.JTable();
         lb_title = new javax.swing.JLabel();
         bt_home = new javax.swing.JButton();
+        jl_appointmentHistory = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tb_AppointmentsList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Doctor", "Especialidad", "Hora", "Fecha"
-            }
-        ));
-        jScrollPane1.setViewportView(tb_AppointmentsList);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 63, 480, 290));
 
         lb_title.setBackground(new java.awt.Color(0, 0, 0));
         lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -65,6 +50,15 @@ public class HistoryAppointmentWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, -1, -1));
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jl_appointmentHistory.setViewportView(jList1);
+
+        getContentPane().add(jl_appointmentHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 460, 310));
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,9 +82,9 @@ public class HistoryAppointmentWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_home;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jl_appointmentHistory;
     private javax.swing.JLabel lb_title;
-    private javax.swing.JTable tb_AppointmentsList;
     // End of variables declaration//GEN-END:variables
 }

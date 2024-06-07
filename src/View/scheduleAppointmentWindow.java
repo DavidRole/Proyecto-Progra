@@ -29,11 +29,12 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_DoctorList = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tb_appointmentsAvailable = new javax.swing.JTable();
+        lb_schedules = new javax.swing.JLabel();
+        jl_schedules = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jl_doctors = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        lb_title = new javax.swing.JLabel();
         bt_schedule = new javax.swing.JButton();
         bt_home = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -44,45 +45,34 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Selecione el medico con el que desee agendar");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 26, -1, -1));
+        lb_schedules.setBackground(new java.awt.Color(0, 0, 0));
+        lb_schedules.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lb_schedules.setForeground(new java.awt.Color(0, 0, 0));
+        lb_schedules.setText("Horarios disponibles");
+        jPanel1.add(lb_schedules, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
 
-        tb_DoctorList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Especialidad"
-            }
-        ));
-        jScrollPane1.setViewportView(tb_DoctorList);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 57, 470, 290));
-
-        tb_appointmentsAvailable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Horario Disponible"
-            }
-        ));
-        tb_appointmentsAvailable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_appointmentsAvailableMouseClicked(evt);
-            }
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(tb_appointmentsAvailable);
+        jl_schedules.setViewportView(jList2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 57, 200, 290));
+        jPanel1.add(jl_schedules, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 200, 290));
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jl_doctors.setViewportView(jList1);
+
+        jPanel1.add(jl_doctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 470, 290));
+
+        lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lb_title.setForeground(new java.awt.Color(0, 0, 0));
+        lb_title.setText("Selecione el medico con el que desee agendar");
+        jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         bt_schedule.setText("Agendar");
         jPanel1.add(bt_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 353, -1, -1));
@@ -103,10 +93,6 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tb_appointmentsAvailableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_appointmentsAvailableMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tb_appointmentsAvailableMouseClicked
-
     private void bt_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_homeActionPerformed
         dispose();
     }//GEN-LAST:event_bt_homeActionPerformed
@@ -115,12 +101,13 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_home;
     private javax.swing.JButton bt_schedule;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tb_DoctorList;
-    private javax.swing.JTable tb_appointmentsAvailable;
+    private javax.swing.JScrollPane jl_doctors;
+    private javax.swing.JScrollPane jl_schedules;
+    private javax.swing.JLabel lb_schedules;
+    private javax.swing.JLabel lb_title;
     // End of variables declaration//GEN-END:variables
 }
