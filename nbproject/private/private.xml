@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/AdminLogInWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/DoctorManagerWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/View/scheduleAppointmentWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/View/CancelAppointmentWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/AdminHomeWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/View/ClientWindow.java</file>
+            <file>file:/D:/Proyecto%20Final%20Progra/Proyecto-Progra/src/Usuario/User.java</file>
+            <file>file:/D:/Proyecto%20Final%20Progra/Proyecto-Progra/src/AdminView/DoctorManagerWindow.java</file>
+            <file>file:/D:/Proyecto%20Final%20Progra/Proyecto-Progra/src/adminControlers/DoctorManagerController.java</file>
+            <file>file:/D:/Proyecto%20Final%20Progra/Proyecto-Progra/src/Storage/Storage.java</file>
+            <file>file:/D:/Proyecto%20Final%20Progra/Proyecto-Progra/src/doctor/doctor.java</file>
+            <file>file:/D:/Proyecto%20Final%20Progra/Proyecto-Progra/src/Usuario/UserBuilder.java</file>
+            <file>file:/D:/Proyecto%20Final%20Progra/Proyecto-Progra/src/adminControlers/ClientInfoController.java</file>
         </group>
     </open-files>
 </project-private>

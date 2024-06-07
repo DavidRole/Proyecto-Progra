@@ -10,7 +10,7 @@ import AdminView.DoctorRegisterWindow;
  *
  * @author crist
  */
-public class ManageDoctorsController {
+public class DoctorManagerController {
     
     public void registerWindow(){
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -18,5 +18,8 @@ public class ManageDoctorsController {
                 new DoctorRegisterWindow().setVisible(true);
             }
         });
+    }
+    public void deleteDoctor(){
+    
     }
 }

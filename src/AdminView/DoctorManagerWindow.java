@@ -4,21 +4,21 @@
  */
 package AdminView;
 
-import adminControlers.ManageDoctorsController;
+import adminControlers.DoctorManagerController;
 
 /**
  *
  * @author darod
  */
 public class DoctorManagerWindow extends javax.swing.JFrame {
-    private ManageDoctorsController controler;
+    private DoctorManagerController controler;
     /**
      * Creates new form DoctorManagerWindow
      */
     public DoctorManagerWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        controler=new ManageDoctorsController();
+        controler=new DoctorManagerController();
 
     }
 
@@ -71,7 +71,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         });
         getContentPane().add(bt_removeSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
 
-        bt_addDoctor.setText("Agregar Cliente");
+        bt_addDoctor.setText("Agregar Doctor");
         bt_addDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_addDoctorActionPerformed(evt);
@@ -79,13 +79,13 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         });
         getContentPane().add(bt_addDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 120, -1));
 
-        bt_removeDoctor.setText("Eliminar Cliente");
+        bt_removeDoctor.setText("Eliminar Doctor");
         bt_removeDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_removeDoctorActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_removeDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
+        getContentPane().add(bt_removeDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, -1));
 
         lb_docs.setBackground(new java.awt.Color(255, 255, 255));
         lb_docs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
