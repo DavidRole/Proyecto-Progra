@@ -18,27 +18,31 @@ import javax.swing.table.DefaultTableModel;
  * @author darod
  */
 public class DoctorManagerWindow extends javax.swing.JFrame {
+
     private DoctorManagerController controler;
     private Storage storage;
     private DefaultTableModel dmDoc;
     private DefaultTableModel dmApp;
+
     /**
      * Creates new form DoctorManagerWindow
      */
     public DoctorManagerWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
-        controler=new DoctorManagerController();
+        controler = new DoctorManagerController();
         this.storage = storage;
-        bt_cancelAppointment.setEnabled(false); 
+
+        bt_cancelAppointment.setEnabled(false);
         bt_removeDoctor.setEnabled(false);
+
         dmDoc = new DefaultTableModel();
         dmApp = new DefaultTableModel();
         tb_doctors.setModel(dmDoc);
         tb_appointments.setModel(dmApp);
-        
+
         addDoctorsRows();
-        
+
     }
 
     /**
@@ -110,7 +114,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         lb_docs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lb_docs.setForeground(new java.awt.Color(255, 255, 255));
         lb_docs.setText("Doctores");
-        getContentPane().add(lb_docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 80, 30));
+        getContentPane().add(lb_docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 80, 30));
 
         lb_appointments.setBackground(new java.awt.Color(255, 255, 255));
         lb_appointments.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -128,15 +132,8 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
             new String [] {
                 "Cliente", "Fecha"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
+        tb_appointments.getTableHeader().setReorderingAllowed(false);
         scrollAppointments.setViewportView(tb_appointments);
 
         getContentPane().add(scrollAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 300, 270));
@@ -151,15 +148,8 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nombre", "Especialidad"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
+        tb_doctors.getTableHeader().setReorderingAllowed(false);
         tb_doctors.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tb_doctorsFocusGained(evt);
@@ -198,11 +188,11 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     private void tb_doctorsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tb_doctorsFocusGained
         bt_removeDoctor.setEnabled(true);
         int selected = tb_doctors.getSelectedRow();
-        if(selected >-1){
-            doctor temp = storage.getDoctors().get(selected); 
-            addSchduleRow(temp.getId());
+        if (selected > -1) {
+            doctor temp = storage.getDoctors().get(selected);
+            addScheduleRow(temp.getId());
         }
-       
+
     }//GEN-LAST:event_tb_doctorsFocusGained
 
 
@@ -227,14 +217,16 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         for (doctor d : list) {
             dmDoc.addRow(d.toRow());
         }
+        
+        dmDoc.fireTableDataChanged();
     }
 
-    private void addSchduleRow(int id){
+    private void addScheduleRow(int id) {
         schedule temp = storage.getSchedulePerDoctor(id);
         ArrayList<appointment> list = temp.getList();
         for (appointment object : list) {
             dmApp.addRow(object.toRow());
         }
     }
-    
+
 }
