@@ -6,8 +6,8 @@ package Storage;
 
 
 import Usuario.User;
-import citas.appointment;
-import citas.schedule;
+import appointments.appointment;
+import appointments.schedule;
 import doctor.doctor;
 import java.io.EOFException;
 import java.io.File;
@@ -25,10 +25,10 @@ import java.util.ArrayList;
  * @author emanu
  */
 public class Storage {
-    ArrayList<doctor> doctors = new ArrayList<>();
-    ArrayList<User> clients = new ArrayList<>(); 
-    ArrayList<schedule> schedules = new ArrayList<>();
-    ArrayList<appointment> canceled = new ArrayList<>();
+    ArrayList<doctor> doctors;
+    ArrayList<User> clients; 
+    ArrayList<schedule> schedules;
+    ArrayList<appointment> canceled;
     
     File doctorsFile = new File("doctors.dat"); 
     File clientsFile = new File("clients.dat"); 
@@ -41,19 +41,17 @@ public class Storage {
  *
  * @author Usuario
  */
-    public synchronized void readAll(){
-        doctorReader();
-        clientReader();
-        scheduleReader();
-        cancelReader();
-    }
     
-    public synchronized void writeAll(){
-        doctorWriter();
-        clientWriter();
-        scheduleWriter();
-        cancelWriter();
+    
+    public Storage(){
+        this.canceled = new ArrayList<>();
+        this.schedules = new ArrayList<>();
+        this.clients = new ArrayList<>();
+        this.doctors = new ArrayList<>();
+        
     }
+
+    
     
     public synchronized void doctorReader() {
          

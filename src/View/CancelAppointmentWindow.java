@@ -5,7 +5,7 @@
 package View;
 
 
-import citas.scheduleList;
+import appointments.scheduleList;
 import controler.CancelAppointmentController;
 
 

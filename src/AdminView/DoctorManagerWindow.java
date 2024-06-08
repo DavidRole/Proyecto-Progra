@@ -4,7 +4,14 @@
  */
 package AdminView;
 
+import Storage.Storage;
+import Usuario.User;
 import adminControlers.DoctorManagerController;
+import appointments.appointment;
+import appointments.schedule;
+import doctor.doctor;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,14 +19,26 @@ import adminControlers.DoctorManagerController;
  */
 public class DoctorManagerWindow extends javax.swing.JFrame {
     private DoctorManagerController controler;
+    private Storage storage;
+    private DefaultTableModel dmDoc;
+    private DefaultTableModel dmApp;
     /**
      * Creates new form DoctorManagerWindow
      */
-    public DoctorManagerWindow() {
+    public DoctorManagerWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
         controler=new DoctorManagerController();
-
+        this.storage = storage;
+        bt_cancelAppointment.setEnabled(false); 
+        bt_removeDoctor.setEnabled(false);
+        dmDoc = new DefaultTableModel();
+        dmApp = new DefaultTableModel();
+        tb_doctors.setModel(dmDoc);
+        tb_appointments.setModel(dmApp);
+        
+        addDoctorsRows();
+        
     }
 
     /**
@@ -38,10 +57,10 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         bt_removeDoctor = new javax.swing.JButton();
         lb_docs = new javax.swing.JLabel();
         lb_appointments = new javax.swing.JLabel();
-        jl_doctorList = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jl_schedule = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        scrollAppointments = new javax.swing.JScrollPane();
+        tb_appointments = new javax.swing.JTable();
+        scrollDoctors = new javax.swing.JScrollPane();
+        tb_doctors = new javax.swing.JTable();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +72,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
                 bt_homeActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, -1, -1));
+        getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 330, -1, -1));
 
         bt_cancelAppointment.setText("Cancelar Cita");
         bt_cancelAppointment.addActionListener(new java.awt.event.ActionListener() {
@@ -99,23 +118,56 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         lb_appointments.setText("Citas Agendadas");
         getContentPane().add(lb_appointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        tb_appointments.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Cliente", "Fecha"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jl_doctorList.setViewportView(jList2);
+        scrollAppointments.setViewportView(tb_appointments);
 
-        getContentPane().add(jl_doctorList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 260));
+        getContentPane().add(scrollAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 300, 270));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        tb_doctors.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Especialidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jl_schedule.setViewportView(jList1);
+        tb_doctors.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tb_doctorsFocusGained(evt);
+            }
+        });
+        scrollDoctors.setViewportView(tb_doctors);
 
-        getContentPane().add(jl_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 300, 260));
+        getContentPane().add(scrollDoctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 510, 270));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         getContentPane().add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 370));
@@ -136,12 +188,22 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_removeScheduleActionPerformed
 
     private void bt_addDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addDoctorActionPerformed
-        controler.registerWindow();
+        controler.registerWindow(storage);
     }//GEN-LAST:event_bt_addDoctorActionPerformed
 
     private void bt_removeDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeDoctorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_removeDoctorActionPerformed
+
+    private void tb_doctorsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tb_doctorsFocusGained
+        bt_removeDoctor.setEnabled(true);
+        int selected = tb_doctors.getSelectedRow();
+        if(selected >-1){
+            doctor temp = storage.getDoctors().get(selected); 
+            addSchduleRow(temp.getId());
+        }
+       
+    }//GEN-LAST:event_tb_doctorsFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -150,12 +212,29 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     private javax.swing.JButton bt_home;
     private javax.swing.JButton bt_removeDoctor;
     private javax.swing.JButton bt_removeSchedule;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JScrollPane jl_doctorList;
-    private javax.swing.JScrollPane jl_schedule;
     private javax.swing.JLabel lb_appointments;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_docs;
+    private javax.swing.JScrollPane scrollAppointments;
+    private javax.swing.JScrollPane scrollDoctors;
+    private javax.swing.JTable tb_appointments;
+    private javax.swing.JTable tb_doctors;
     // End of variables declaration//GEN-END:variables
+
+    private void addDoctorsRows() {
+        ArrayList<doctor> list = storage.getDoctors();
+
+        for (doctor d : list) {
+            dmDoc.addRow(d.toRow());
+        }
+    }
+
+    private void addSchduleRow(int id){
+        schedule temp = storage.getSchedulePerDoctor(id);
+        ArrayList<appointment> list = temp.getList();
+        for (appointment object : list) {
+            dmApp.addRow(object.toRow());
+        }
+    }
+    
 }

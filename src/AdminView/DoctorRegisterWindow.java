@@ -4,6 +4,7 @@
  */
 package AdminView;
 
+import Storage.Storage;
 import doctor.speciality;
 import javax.swing.JComboBox;
 
@@ -12,13 +13,14 @@ import javax.swing.JComboBox;
  * @author darod
  */
 public class DoctorRegisterWindow extends javax.swing.JFrame {
-
+    private Storage storage;
     /**
      * Creates new form DoctorRegisterWindow
      */
-    public DoctorRegisterWindow() {
+    public DoctorRegisterWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
+        this.storage=storage;
         cb_speciality.addItem(speciality.anastesiologia.name());
         cb_speciality.addItem(speciality.cardiologia.name());
         cb_speciality.addItem(speciality.dermatologia.name());
@@ -29,6 +31,8 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         cb_speciality.addItem(speciality.oncologia.name());
         cb_speciality.addItem(speciality.pediatria.name());
         cb_speciality.addItem(speciality.radiologia.name());
+        
+        
 
     }
 
@@ -84,6 +88,11 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         jPanel1.add(cb_speciality, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 160, -1));
 
         bt_registerDoc.setText("Registrar Doctor");
+        bt_registerDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_registerDocActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_registerDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
@@ -93,6 +102,10 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_registerDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registerDocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_registerDocActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

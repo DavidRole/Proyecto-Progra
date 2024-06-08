@@ -4,17 +4,28 @@
  */
 package AdminView;
 
+import Storage.Storage;
+import appointments.appointment;
+import appointments.schedule;
+import doctor.doctor;
+import java.util.ArrayList;
+
 /**
  *
  * @author darod
  */
 public class ScheduleAppointmentWindow extends javax.swing.JFrame {
 
+    private Storage storage;
+
     /**
      * Creates new form ScheduleAppointmentWindow
      */
     public ScheduleAppointmentWindow() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.storage = storage;
+        bt_schedule.setEnabled(false);
     }
 
     /**
@@ -49,6 +60,11 @@ public class ScheduleAppointmentWindow extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jList2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jList2FocusGained(evt);
+            }
         });
         jl_schedules.setViewportView(jList2);
 
@@ -99,10 +115,13 @@ public class ScheduleAppointmentWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_scheduleActionPerformed
 
+    private void jList2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jList2FocusGained
+        bt_schedule.setEnabled(true);
+    }//GEN-LAST:event_jList2FocusGained
+
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_home;
@@ -115,4 +134,13 @@ public class ScheduleAppointmentWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lb_schedules;
     private javax.swing.JLabel lb_title;
     // End of variables declaration//GEN-END:variables
+
+//private void addRows() {
+//        schedule list = storage.getSchedulePerDoctor(0);
+//
+//        for (doctor d : list) {
+//            dm.addRow(d.toRow());
+//        }
+//    }
+    
 }

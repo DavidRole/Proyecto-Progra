@@ -5,7 +5,10 @@
 package AdminView;
 
 import Storage.Storage;
+import Usuario.User;
 import adminControlers.AdminLogInController;
+import doctor.doctor;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -19,12 +22,12 @@ public class AdminLogInWindow extends javax.swing.JFrame {
     /**
      * Creates new form AdminSignInWindow
      */
-    public AdminLogInWindow(Storage storage) {
+    public AdminLogInWindow() {
         initComponents();
         setLocationRelativeTo(null);
-        this.storage = storage;
-        storage.readAll();
-        controler = new AdminLogInController(this.storage);
+        storage = new Storage();
+        storage.doctorReader();
+        controler = new AdminLogInController(storage);
     }
 
     /**
@@ -132,13 +135,14 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+      
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminLogInWindow(storage).setVisible(true);
+                new AdminLogInWindow().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

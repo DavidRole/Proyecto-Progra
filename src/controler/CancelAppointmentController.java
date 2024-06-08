@@ -4,8 +4,8 @@
  */
 package controler;
 
-import citas.appointment;
-import citas.scheduleList;
+import appointments.appointment;
+import appointments.scheduleList;
 
 /**
  *

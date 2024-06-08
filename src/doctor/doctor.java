@@ -54,4 +54,10 @@ public class doctor implements Serializable{
     public String toString() {
         return "Name: " + name + " id: " + id + ", specialty: " + spec;
     }
+    
+    public Object[] toRow(){
+       Object[] data = {id, name, spec};
+       
+       return data;
+    }
 }

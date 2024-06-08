@@ -5,6 +5,7 @@
 package adminControlers;
 
 import AdminView.DoctorRegisterWindow;
+import Storage.Storage;
 
 /**
  *
@@ -12,10 +13,10 @@ import AdminView.DoctorRegisterWindow;
  */
 public class DoctorManagerController {
     
-    public void registerWindow(){
+    public void registerWindow(Storage storage){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorRegisterWindow().setVisible(true);
+                new DoctorRegisterWindow(storage).setVisible(true);
             }
         });
     }

@@ -31,7 +31,7 @@ public class ClientManagerWindow extends javax.swing.JFrame {
         this.storage = storage;
         dm = new DefaultTableModel();
         tb_clients.setModel(dm);
-
+        
         addRows();
     }
 

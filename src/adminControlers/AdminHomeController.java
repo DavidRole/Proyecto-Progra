@@ -17,7 +17,7 @@ public class AdminHomeController {
     public void DoctorManagerWindow(Storage storage){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorManagerWindow().setVisible(true);
+                new DoctorManagerWindow(storage).setVisible(true);
             }
         });
     }

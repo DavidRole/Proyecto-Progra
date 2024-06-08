@@ -14,7 +14,7 @@ import Storage.Storage;
  */
 public class AdminLogInController {
     private Storage storage;
-    private final String ID = "Healer";
+    private final String ID = "HealerChan";
     private final String PASSWORD = "0000";
 
     public AdminLogInController(Storage storage) {

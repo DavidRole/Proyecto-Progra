@@ -6,7 +6,7 @@ package AdminView;
 
 import Storage.Storage;
 import Usuario.User;
-import citas.appointment;
+import appointments.appointment;
 
 /**
  *
