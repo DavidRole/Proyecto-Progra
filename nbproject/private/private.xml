@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/AdminLogInWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/doctor/doctor.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/DoctorRegisterWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/adminControlers/AdminHomeController.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/DoctorManagerWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/ClientManagerWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/AdminView/ClientInfoWindow.java</file>
-            <file>file:/E:/UCR/III%20Semestre/Progra%20II/ProyectoProgra/src/adminControlers/AdminLogInController.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/doctor/speciality.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/AdminView/DoctorRegisterWindow.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/AdminView/AdminLogInWindow.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/doctor/doctor.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/Storage/Storage.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/AdminView/DoctorManagerWindow.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/adminControlers/DoctorRegisterController.java</file>
+            <file>file:/E:/UCR/III%20Semestre/Progra%20II/Proyecto-Progra/Proyecto-Progra/src/appointments/schedule.java</file>
         </group>
     </open-files>
 </project-private>

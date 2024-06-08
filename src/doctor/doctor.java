@@ -26,6 +26,12 @@ public class doctor implements Serializable{
         this.name = name;
     }
 
+    public doctor(int id, String name, speciality spec) {
+        this.id = id;
+        this.name = name;
+        this.spec = spec;
+    }
+
     public int getId() {
         return id;
     }

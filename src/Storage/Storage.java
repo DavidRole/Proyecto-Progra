@@ -4,7 +4,6 @@
  */
 package Storage;
 
-
 import Usuario.User;
 import appointments.appointment;
 import appointments.schedule;
@@ -19,85 +18,78 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author emanu
  */
 public class Storage {
-    private final ArrayList<doctor> doctors;
-    private final ArrayList<User> clients; 
-    private final ArrayList<schedule> schedules;
-    private final ArrayList<appointment> canceled;
-    
-    private final File doctorsFile = new File("doctors.dat"); 
-    private final File clientsFile = new File("clients.dat"); 
-    private final File scheduleFile = new File("schedule.dat"); 
-    private final File canceledFile = new File("cancel.dat"); 
-    
-    private ObjectInputStream input = null; 
+
+    private ArrayList<doctor> doctors;
+    private ArrayList<User> clients;
+    private ArrayList<schedule> schedules;
+    private ArrayList<appointment> canceled;
+
+    private final File doctorsFile = new File("doctors.dat");
+    private final File clientsFile = new File("clients.dat");
+    private final File scheduleFile = new File("schedule.dat");
+    private final File canceledFile = new File("cancel.dat");
+
+    private ObjectInputStream input = null;
     private ObjectOutputStream output = null;
-/**
- *
- * @author Usuario
- */
-    
-    
-    public Storage(){
-        this.canceled = new ArrayList<>();
-        this.schedules = new ArrayList<>();
-        this.clients = new ArrayList<>();
-        this.doctors = new ArrayList<>();
-        
+
+    /**
+     *
+     * @author Usuario
+     */
+    public Storage() {
+
     }
 
-    
-    
     public synchronized void doctorReader() {
-         
-        
+        doctors = new ArrayList<>();
+
         try {
             //Codigo lectura
             FileInputStream fileInput = new FileInputStream(doctorsFile);
             input = new ObjectInputStream(fileInput);
             Object object = input.readObject();
-            doctor doctor; 
-           
-            while(object != null){
-                doctor = (doctor) object; 
+            doctor doctor;
+
+            while (object != null) {
+                doctor = (doctor) object;
                 System.out.println(doctor);
-                doctors.add(doctor); 
+                doctors.add(doctor);
                 object = input.readObject();
             }
-            
+
         } catch (FileNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }catch(EOFException ex){
+        } catch (EOFException ex) {
             System.err.println("Fin del archivo");
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
-                if(input != null){
-                     input.close();
+                if (input != null) {
+                    input.close();
                 }
             } catch (IOException ex) {
                 System.err.println(ex.getMessage());
-            
+
             }
-            
+
         }
     }
-    
-    public synchronized void doctorWriter(){
+
+    public synchronized void doctorWriter() {
         //Codigo escritura
 
-        try { 
+        try {
             FileOutputStream fileout = new FileOutputStream(doctorsFile);
-            output = new ObjectOutputStream(fileout); 
-            
+            output = new ObjectOutputStream(fileout);
+
             for (doctor d : doctors) {
                 output.writeObject(d);
             }
@@ -105,7 +97,7 @@ public class Storage {
             System.err.println(ex.getMessage());
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
                 output.close();
             } catch (IOException ex) {
@@ -113,50 +105,50 @@ public class Storage {
             }
         }
     }
-    
+
     public synchronized void clientReader() {
-        
+        this.clients = new ArrayList<>();
         try {
             //Codigo lectura
             FileInputStream fileInput = new FileInputStream(clientsFile);
             input = new ObjectInputStream(fileInput);
             Object object = input.readObject();
-            User user; 
-           
-            while(object != null){
-                user = (User) object; 
+            User user;
+
+            while (object != null) {
+                user = (User) object;
                 System.out.println(user);
-                clients.add(user); 
+                clients.add(user);
                 object = input.readObject();
             }
-            
+
         } catch (FileNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }catch(EOFException ex){
+        } catch (EOFException ex) {
             System.err.println("Fin del archivo");
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
-                if(input != null){
-                     input.close();
+                if (input != null) {
+                    input.close();
                 }
             } catch (IOException ex) {
                 System.err.println(ex.getMessage());
-            
+
             }
-            
+
         }
     }
-    
-    public synchronized void clientWriter(){
+
+    public synchronized void clientWriter() {
         //Codigo escritura 
-        try { 
+        try {
             FileOutputStream fileout = new FileOutputStream(clientsFile);
-            output = new ObjectOutputStream(fileout); 
-            
+            output = new ObjectOutputStream(fileout);
+
             for (User d : clients) {
                 output.writeObject(d);
             }
@@ -164,7 +156,7 @@ public class Storage {
             System.err.println(ex.getMessage());
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
                 output.close();
             } catch (IOException ex) {
@@ -172,51 +164,51 @@ public class Storage {
             }
         }
     }
-    
+
     public synchronized void scheduleReader() {
-         
-        
+        this.schedules = new ArrayList<>();
+
         try {
             //Codigo lectura
             FileInputStream fileInput = new FileInputStream(scheduleFile);
             input = new ObjectInputStream(fileInput);
             Object object = input.readObject();
-            schedule schedule; 
-           
-            while(object != null){
-                schedule = (schedule) object; 
+            schedule schedule;
+
+            while (object != null) {
+                schedule = (schedule) object;
                 System.out.println(schedule);
-                schedules.add(schedule); 
+                schedules.add(schedule);
                 object = input.readObject();
             }
-            
+
         } catch (FileNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }catch(EOFException ex){
+        } catch (EOFException ex) {
             System.err.println("Fin del archivo");
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
-                if(input != null){
-                     input.close();
+                if (input != null) {
+                    input.close();
                 }
             } catch (IOException ex) {
                 System.err.println(ex.getMessage());
-            
+
             }
-            
+
         }
     }
-    
-    public synchronized void scheduleWriter(){
+
+    public synchronized void scheduleWriter() {
         //Codigo escritura 
-        try { 
+        try {
             FileOutputStream fileout = new FileOutputStream(scheduleFile);
-            output = new ObjectOutputStream(fileout); 
-            
+            output = new ObjectOutputStream(fileout);
+
             for (schedule s : schedules) {
                 output.writeObject(s);
             }
@@ -224,7 +216,7 @@ public class Storage {
             System.err.println(ex.getMessage());
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
                 output.close();
             } catch (IOException ex) {
@@ -232,51 +224,51 @@ public class Storage {
             }
         }
     }
-    
+
     public synchronized void cancelReader() {
-         
-        
+        this.canceled = new ArrayList<>();
+
         try {
             //Codigo lectura
             FileInputStream fileInput = new FileInputStream(canceledFile);
             input = new ObjectInputStream(fileInput);
             Object object = input.readObject();
-            appointment appointment; 
-           
-            while(object != null){
-                appointment = (appointment) object; 
+            appointment appointment;
+
+            while (object != null) {
+                appointment = (appointment) object;
                 System.out.println(appointment);
-                canceled.add(appointment); 
+                canceled.add(appointment);
                 object = input.readObject();
             }
-            
+
         } catch (FileNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }catch(EOFException ex){
+        } catch (EOFException ex) {
             System.err.println("Fin del archivo");
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
-                if(input != null){
-                     input.close();
+                if (input != null) {
+                    input.close();
                 }
             } catch (IOException ex) {
                 System.err.println(ex.getMessage());
-            
+
             }
-            
+
         }
     }
-    
-    public synchronized void cancelWriter(){
+
+    public synchronized void cancelWriter() {
         //Codigo escritura 
-        try { 
+        try {
             FileOutputStream fileout = new FileOutputStream(canceledFile);
-            output = new ObjectOutputStream(fileout); 
-            
+            output = new ObjectOutputStream(fileout);
+
             for (appointment c : canceled) {
                 output.writeObject(c);
             }
@@ -284,7 +276,7 @@ public class Storage {
             System.err.println(ex.getMessage());
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
-        }finally{
+        } finally {
             try {
                 output.close();
             } catch (IOException ex) {
@@ -292,32 +284,32 @@ public class Storage {
             }
         }
     }
-    
-    public synchronized ArrayList<appointment> getActiveAppointments(String id){
+
+    public synchronized ArrayList<appointment> getActiveAppointments(String id) {
         ArrayList<appointment> activeAppointments = new ArrayList<>();
         appointment temp = null;
-        
+
         for (schedule schedule1 : schedules) {
             temp = schedule1.getAppointment(id);
             activeAppointments.add(temp);
         }
-        
+
         return activeAppointments;
     }
-    
-    public synchronized appointment getAppointment(appointment ap){
+
+    public synchronized appointment getAppointment(appointment ap) {
         appointment temp = null;
-        
+
         for (schedule schedule1 : schedules) {
             schedule1.getAppointment(ap);
         }
-        
+
         return temp;
     }
-    
-    public synchronized schedule getSchedulePerDoctor(int id){
+
+    public synchronized schedule getSchedulePerDoctor(int id) {
         for (schedule schedule1 : schedules) {
-            if(schedule1.getDoctorID() == id){
+            if (schedule1.getDoctorID() == id) {
                 return schedule1;
             }
         }
@@ -343,8 +335,89 @@ public class Storage {
     public synchronized ObjectInputStream getInput() {
         return input;
     }
+
+    public boolean addDoctor(doctor d) {
+        doctorReader();
+        if(findDoctor(d.getId())!= null){
+            doctors.add(d);
+            doctorWriter();
+            doctorReader();
+        }else{
+            return false;
+        }
+        return true;
+    }
     
+    public boolean addClient(User client) {
+        clientReader();
+        if(findClient(client.getId())!= null){
+            clients.add(client);
+            clientWriter();
+            clientReader();
+        }else{
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean addSchedule(schedule sq) {
+        scheduleReader();
+        if(findSchedule(sq)!= null){
+            schedules.add(sq);
+            scheduleWriter();
+            scheduleReader();
+        }else{
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean addCanceledApp(appointment appointment) {
+        cancelReader();
+        if(findCanceledApp(appointment)!= null){
+            canceled.add(appointment);
+            cancelWriter();
+            cancelReader();
+        }else{
+            return false;
+        }
+        return true;
+    }
+
+    public doctor findDoctor(int doc) {
+        for (doctor doctor : doctors) {
+            if (doctor.getId() == doc) {
+                return doctor;
+            }
+        }
+        return null;
+    }
+
+    public User findClient(String client) {
+        for (User client1 : clients) {
+            if (client1.getId().equals(client)) {
+                return client1;
+            }
+        }
+        return null;
+    }
+    
+    public schedule findSchedule(schedule sq){
+        for (schedule schedule1 : schedules) {
+            if(schedule1.equals(sq)){
+                return schedule1;
+            }
+        }
+        return null;
+    }
+    
+    public appointment findCanceledApp(appointment app){
+        for (appointment appointment1 : canceled) {
+            if(appointment1.equals(app)){
+                return appointment1;
+            } 
+        }
+        return null;
+    }
     
 }
-
-
