@@ -29,7 +29,8 @@ public class ClientManagerWindow extends javax.swing.JFrame {
         controller = new ClientManagerController();
         bt_askClient.setEnabled(false);
         this.storage = storage;
-        dm = new DefaultTableModel();
+        String[] clientsColumnHeaders = { "Nombre", "Apellido", "Cedula"};
+        dm = new DefaultTableModel(clientsColumnHeaders, 0);
         tb_clients.setModel(dm);
         
         addRows();
@@ -141,9 +142,14 @@ public class ClientManagerWindow extends javax.swing.JFrame {
 
     private void addRows() {
         ArrayList<User> list = storage.getClients();
-
+        dm.setRowCount(0);
+        
         for (User user : list) {
             dm.addRow(user.toRow());
         }
+        
+        dm.fireTableDataChanged();
     }
+    
+    
 }

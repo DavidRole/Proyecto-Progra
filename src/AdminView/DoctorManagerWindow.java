@@ -134,6 +134,11 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
             }
         ));
         tb_appointments.getTableHeader().setReorderingAllowed(false);
+        tb_appointments.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tb_appointmentsFocusGained(evt);
+            }
+        });
         scrollAppointments.setViewportView(tb_appointments);
 
         getContentPane().add(scrollAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 300, 270));
@@ -203,6 +208,10 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tb_doctorsFocusGained
 
+    private void tb_appointmentsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tb_appointmentsFocusGained
+        bt_cancelAppointment.setEnabled(true);
+    }//GEN-LAST:event_tb_appointmentsFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_addDoctor;
@@ -252,9 +261,13 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     private void addScheduleRow(int id) {
         schedule temp = storage.getSchedulePerDoctor(id);
         ArrayList<appointment> list = temp.getList();
+        
+        dmApp.setRowCount(0);
+        
         for (appointment object : list) {
             dmApp.addRow(object.toRow());
         }
+        dmApp.fireTableDataChanged();
     }
     
 

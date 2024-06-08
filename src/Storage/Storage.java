@@ -25,18 +25,18 @@ import java.util.ArrayList;
  * @author emanu
  */
 public class Storage {
-    ArrayList<doctor> doctors;
-    ArrayList<User> clients; 
-    ArrayList<schedule> schedules;
-    ArrayList<appointment> canceled;
+    private final ArrayList<doctor> doctors;
+    private final ArrayList<User> clients; 
+    private final ArrayList<schedule> schedules;
+    private final ArrayList<appointment> canceled;
     
-    File doctorsFile = new File("doctors.dat"); 
-    File clientsFile = new File("clients.dat"); 
-    File scheduleFile = new File("schedule.dat"); 
-    File canceledFile = new File("cancel.dat"); 
+    private final File doctorsFile = new File("doctors.dat"); 
+    private final File clientsFile = new File("clients.dat"); 
+    private final File scheduleFile = new File("schedule.dat"); 
+    private final File canceledFile = new File("cancel.dat"); 
     
-    ObjectInputStream input = null; 
-    ObjectOutputStream output = null;
+    private ObjectInputStream input = null; 
+    private ObjectOutputStream output = null;
 /**
  *
  * @author Usuario
@@ -157,7 +157,7 @@ public class Storage {
             FileOutputStream fileout = new FileOutputStream(clientsFile);
             output = new ObjectOutputStream(fileout); 
             
-            for (doctor d : doctors) {
+            for (User d : clients) {
                 output.writeObject(d);
             }
         } catch (FileNotFoundException ex) {
@@ -317,7 +317,7 @@ public class Storage {
     
     public synchronized schedule getSchedulePerDoctor(int id){
         for (schedule schedule1 : schedules) {
-            if(schedule1.getDoctor().getId() == id){
+            if(schedule1.getDoctorID() == id){
                 return schedule1;
             }
         }

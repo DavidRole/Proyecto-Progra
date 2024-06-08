@@ -5,7 +5,7 @@
 package View;
 
 
-import appointments.scheduleList;
+
 import controler.CancelAppointmentController;
 
 
@@ -22,18 +22,6 @@ public class CancelAppointmentWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-    
-
-    /**
-     * Creates new form CancelAppointmentWindow
-     */
-    public CancelAppointmentWindow(scheduleList list) {
-        initComponents();
-        setLocationRelativeTo(null);
-        controler = new CancelAppointmentController(list);
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

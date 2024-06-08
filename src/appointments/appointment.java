@@ -78,7 +78,7 @@ public class appointment implements Comparable<appointment>, Serializable{
     }
     
     public Object[] toRow(){
-        Object[] data = {pacient,date};
+        Object[] data = {pacient,format(date)};
         
         return data;
     }

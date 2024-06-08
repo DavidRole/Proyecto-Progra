@@ -4,8 +4,6 @@
  */
 package appointments;
 
-
-import doctor.doctor;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,15 +14,16 @@ import java.util.GregorianCalendar;
  *
  * @author david
  */
-public class schedule implements Serializable{
-    
-    private doctor doctor;
+public class schedule implements Serializable {
+
+    private Integer doctorID;
     private final ArrayList<appointment> list;
     private GregorianCalendar date;
 
-    public schedule(doctor doctor) {
+    public schedule(Integer id) {
         this.list = new ArrayList<>();
-        this.doctor = doctor;
+        this.doctorID = id;
+        fillSchedule();
     }
 
     public String addAppointment(appointment ap) {
@@ -33,7 +32,7 @@ public class schedule implements Serializable{
         int minHour = 8;        //Eso representa a las 8am en formato 24h 
         int maxHour = 16;    //Eso representa a las 4pm en formato 24h 
         int inicioAlmuerzo = 12;    //inicio hora de almuerzo de los medicos  
-        int finAlmuerzo = 13;       //final hora de almuerzo de los medicos .
+        int finAlmuerzo = 13;       //final hora de almuerzo de los medicos
 
         if (hour >= minHour && hour < maxHour) {
             if (hour != inicioAlmuerzo && hour >= finAlmuerzo) {
@@ -57,17 +56,17 @@ public class schedule implements Serializable{
         }
         return null;
     }
-    
+
     public appointment getAppointment(appointment ap) {
         for (int i = 0; i < list.size(); i++) {
             appointment appointmet = list.get(i);
-            if (appointmet.equals( ap)) {
+            if (appointmet.equals(ap)) {
                 return appointmet;
             }
         }
         return null;//cambiar por exception TALVEZ
     }
-    
+
     public String getSchedule() {
         String msg = "";
         for (appointment object : list) {
@@ -76,12 +75,12 @@ public class schedule implements Serializable{
         return msg;
     }
 
-    public doctor getDoctor() {
-        return doctor;
+    public Integer getDoctorID() {
+        return doctorID;
     }
 
-    public void setDoctor(doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctorID(Integer doctorID) {
+        this.doctorID = doctorID;
     }
 
     public GregorianCalendar getDate() {
@@ -95,5 +94,22 @@ public class schedule implements Serializable{
     public ArrayList<appointment> getList() {
         return list;
     }
-    
+
+    private void fillSchedule() {
+
+        for (int i = 8; i < 16; i++) {
+            int j = 0;
+            GregorianCalendar date = new GregorianCalendar(2024, 06, 07, i, j);
+            appointment a = new appointment(null, date);
+
+            addAppointment(a);
+
+            if (j == 0) {
+                j = 30;
+            } else {
+                j = 0;
+            }
+        }
+
+    }
 }
