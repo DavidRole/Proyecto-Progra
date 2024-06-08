@@ -6,9 +6,11 @@ package AdminView;
 
 import Storage.Storage;
 import Usuario.User;
+
 import adminControlers.AdminLogInController;
-import doctor.doctor;
+import appointments.schedule;
 import java.util.GregorianCalendar;
+
 
 /**
  *
@@ -27,9 +29,12 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         storage = new Storage();
         storage.doctorReader();
+        storage.clientReader();
+        storage.scheduleReader();
         controler = new AdminLogInController(storage);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,7 +140,10 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-      
+//        Storage storage = new Storage();
+//        storage.getSchedules().add(new schedule(777));
+//        storage.scheduleReader();
+//        storage.scheduleWriter();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
