@@ -5,22 +5,27 @@
 package AdminView;
 
 import Storage.Storage;
+import adminControlers.DoctorRegisterController;
 import doctor.speciality;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author darod
  */
 public class DoctorRegisterWindow extends javax.swing.JFrame {
+
     private Storage storage;
+    private DoctorRegisterController controller;
+
     /**
      * Creates new form DoctorRegisterWindow
      */
     public DoctorRegisterWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
-        this.storage=storage;
+        this.storage = storage;
         cb_speciality.addItem(speciality.anastesiologia.name());
         cb_speciality.addItem(speciality.cardiologia.name());
         cb_speciality.addItem(speciality.dermatologia.name());
@@ -32,8 +37,7 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         cb_speciality.addItem(speciality.pediatria.name());
         cb_speciality.addItem(speciality.radiologia.name());
         
-        
-
+        controller = new DoctorRegisterController(storage);
     }
 
     /**
@@ -49,8 +53,8 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         lb_title = new javax.swing.JLabel();
         lb_name = new javax.swing.JLabel();
         lb_id = new javax.swing.JLabel();
-        txt_name = new javax.swing.JTextField();
         txt_id = new javax.swing.JTextField();
+        txt_name = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         cb_speciality = new javax.swing.JComboBox<>();
         bt_registerDoc = new javax.swing.JButton();
@@ -76,8 +80,8 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         lb_id.setForeground(new java.awt.Color(255, 255, 255));
         lb_id.setText("ID del Empleado");
         jPanel1.add(lb_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
-        jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 160, -1));
-        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 160, -1));
+        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 160, -1));
+        jPanel1.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 160, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,7 +108,11 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_registerDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registerDocActionPerformed
-        // TODO add your handling code here:
+        String name = txt_name.getText();
+        int id = Integer.parseInt(txt_id.getText());
+        speciality spec = parser((String) cb_speciality.getSelectedItem());
+        
+        JOptionPane.showMessageDialog(null, controller.register(name, id, spec));
     }//GEN-LAST:event_bt_registerDocActionPerformed
 
 
@@ -120,5 +128,30 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_name;
     // End of variables declaration//GEN-END:variables
-
+    public speciality parser(String spec) {
+        switch (spec) {
+            case "cardiologia":
+                return speciality.cardiologia;
+            case "radiologia":
+                return speciality.radiologia;
+            case "endocrinologia":
+                return speciality.endocrinologia;
+            case "dermatologia":
+                return speciality.dermatologia;
+            case "neurologia":
+                return speciality.neurologia;
+            case "internimo":
+                return speciality.internismo;
+            case "oncologia":
+                return speciality.oncologia;
+            case "pediatria":
+                return speciality.oncologia;
+            case "gastroenterologia":
+                return speciality.gastroenterologia;
+            case "anastesiologia":
+                return speciality.anastesiologia;
+            default:
+                return null;
+        }
+    }
 }

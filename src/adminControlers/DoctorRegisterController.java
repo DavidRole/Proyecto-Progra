@@ -20,8 +20,8 @@ public class DoctorRegisterController {
         this.storage = storage;
     }
 
-    public String register(String name, String id, speciality spec) {
-        doctor d = new doctor(Integer.parseInt(id), name, spec);
+    public String register(String name, int id, speciality spec) {
+        doctor d = new doctor(id, name, spec);
 
         if (storage.addDoctor(d)) {
             return "El doctor fue agregado exitosamente";
