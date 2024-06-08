@@ -5,7 +5,6 @@
 package AdminView;
 
 import Storage.Storage;
-import Usuario.User;
 import adminControlers.DoctorManagerController;
 import appointments.appointment;
 import appointments.schedule;
@@ -132,7 +131,15 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
             new String [] {
                 "Cliente", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tb_appointments.getTableHeader().setReorderingAllowed(false);
         tb_appointments.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -261,14 +268,13 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     private void addScheduleRow(int id) {
         schedule temp = storage.getSchedulePerDoctor(id);
         ArrayList<appointment> list = temp.getList();
-        
         dmApp.setRowCount(0);
         
         for (appointment object : list) {
+            System.out.println(object.getDate());
             dmApp.addRow(object.toRow());
         }
         dmApp.fireTableDataChanged();
     }
-    
 
 }

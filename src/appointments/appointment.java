@@ -50,6 +50,7 @@ public class appointment implements Comparable<appointment>, Serializable{
     public GregorianCalendar getDate() {
         return date;
     }
+    
 
     public void setDate(GregorianCalendar date) {
         this.date = date;
