@@ -41,8 +41,8 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         tb_doctors.setModel(dmDoc);
         tb_appointments.setModel(dmApp);
 
+        initializeModels();
         addDoctorsRows();
-
     }
 
     /**
@@ -148,7 +148,15 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nombre", "Especialidad"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tb_doctors.getTableHeader().setReorderingAllowed(false);
         tb_doctors.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -214,11 +222,31 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     private void addDoctorsRows() {
         ArrayList<doctor> list = storage.getDoctors();
 
-        for (doctor d : list) {
-            dmDoc.addRow(d.toRow());
+        // Limpiar la tabla antes de agregar nuevas filas
+        dmDoc.setRowCount(0);
+
+        // Agregar filas al modelo de la tabla
+        for (doctor doc : list) {
+            Object[] rowData = {doc.getId(), doc.getName(), doc.getSpec()};
+            dmDoc.addRow(rowData);
         }
-        
+
+        // Actualizar la tabla
         dmDoc.fireTableDataChanged();
+    }
+
+    private void initializeModels() {
+        // Encabezados de las columnas
+        String[] doctorColumnHeaders = {"ID", "Nombre", "Especialidad"};
+        String[] appointmentColumnHeaders = {"Cliente", "Fecha"};
+
+        // Crear modelos de tabla con los encabezados
+        dmDoc = new DefaultTableModel(doctorColumnHeaders, 0);
+        dmApp = new DefaultTableModel(appointmentColumnHeaders, 0);
+
+        // Asignar los modelos a las tablas
+        tb_doctors.setModel(dmDoc);
+        tb_appointments.setModel(dmApp);
     }
 
     private void addScheduleRow(int id) {
@@ -228,5 +256,6 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
             dmApp.addRow(object.toRow());
         }
     }
+    
 
 }
