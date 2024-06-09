@@ -219,7 +219,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         int temp = tb_doctors.getSelectedRow();
         doctor doctorTemp = storage.getDoctors().get(temp);
 
-        if (controller.removeDoctor(doctorTemp, storage, temp)) {
+        if (controller.removeDoctor(doctorTemp, storage)) {
             JOptionPane.showMessageDialog(null, "Doctor eliminado correctamente");
             addDoctorsRows(); // Actualizar la tabla de doctores después de eliminar uno
         } else {

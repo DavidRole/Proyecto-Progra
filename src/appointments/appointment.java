@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
  * @author david
  */
 public class appointment implements Comparable<appointment>, Serializable{
-
+    private static final long serialVersionUID = 987651234L; 
     private User pacient; 
     private GregorianCalendar date;
     private static int id = 0; 

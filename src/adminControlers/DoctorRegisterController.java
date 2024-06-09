@@ -5,6 +5,7 @@
 package adminControlers;
 
 import Storage.Storage;
+import appointments.schedule;
 import doctor.doctor;
 import doctor.speciality;
 
@@ -22,6 +23,7 @@ public class DoctorRegisterController {
 
     public boolean register(String name, int id, speciality spec) {
         doctor d = new doctor(id, name, spec);
+        storage.addSchedule(new schedule(id));
         return storage.addDoctor(d);
         
     }

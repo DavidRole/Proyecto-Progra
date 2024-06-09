@@ -143,7 +143,7 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         //</editor-fold>
         Storage storage = new Storage();
 //        storage.addClient(new User("25", "g@mail.com", "Juana2511!", new GregorianCalendar(), "David", "Rodriguez", "8888-8888"));
-        
+//        storage.addSchedule(new schedule(777));
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
