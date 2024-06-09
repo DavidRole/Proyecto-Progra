@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author david
  */
 public class doctor implements Serializable{
-
+    private static final long serialVersionUID = 123456789L;
     private int id;
     private String name;
     private speciality spec;

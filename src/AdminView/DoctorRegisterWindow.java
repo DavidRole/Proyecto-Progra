@@ -58,6 +58,7 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cb_speciality = new javax.swing.JComboBox<>();
         bt_registerDoc = new javax.swing.JButton();
+        bt_home = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,7 +98,15 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
                 bt_registerDocActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_registerDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
+        jPanel1.add(bt_registerDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
+
+        bt_home.setText("Atrás");
+        bt_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_homeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, -1, -1));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 300, 370));
@@ -115,8 +124,13 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, controller.register(name, id, spec));
     }//GEN-LAST:event_bt_registerDocActionPerformed
 
+    private void bt_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_homeActionPerformed
+        dispose();
+    }//GEN-LAST:event_bt_homeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_home;
     private javax.swing.JButton bt_registerDoc;
     private javax.swing.JComboBox<String> cb_speciality;
     private javax.swing.JLabel jLabel1;

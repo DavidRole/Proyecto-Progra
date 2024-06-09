@@ -42,7 +42,10 @@ public class Storage {
      * @author Usuario
      */
     public Storage() {
-
+        doctors = new ArrayList<>();
+        clients = new ArrayList<>();
+        schedules = new ArrayList<>();
+        canceled = new ArrayList<>();
     }
 
     public synchronized void doctorReader() {
@@ -338,19 +341,20 @@ public class Storage {
 
     public boolean addDoctor(doctor d) {
         doctorReader();
-        if(findDoctor(d.getId())!= null){
+        if(findDoctor(d.getId()) == null){
             doctors.add(d);
             doctorWriter();
             doctorReader();
+            return true;
         }else{
             return false;
         }
-        return true;
+        
     }
     
     public boolean addClient(User client) {
         clientReader();
-        if(findClient(client.getId())!= null){
+        if(findClient(client.getId()) == null){
             clients.add(client);
             clientWriter();
             clientReader();
@@ -362,7 +366,7 @@ public class Storage {
     
     public boolean addSchedule(schedule sq) {
         scheduleReader();
-        if(findSchedule(sq)!= null){
+        if(findSchedule(sq) == null){
             schedules.add(sq);
             scheduleWriter();
             scheduleReader();
@@ -374,7 +378,7 @@ public class Storage {
     
     public boolean addCanceledApp(appointment appointment) {
         cancelReader();
-        if(findCanceledApp(appointment)!= null){
+        if(findCanceledApp(appointment) == null){
             canceled.add(appointment);
             cancelWriter();
             cancelReader();
@@ -384,16 +388,17 @@ public class Storage {
         return true;
     }
 
-    public doctor findDoctor(int doc) {
+    private doctor findDoctor(int doc) {
         for (doctor doctor : doctors) {
             if (doctor.getId() == doc) {
+                System.out.println(doctor+"\n"+doc);
                 return doctor;
             }
         }
         return null;
     }
 
-    public User findClient(String client) {
+    private User findClient(String client) {
         for (User client1 : clients) {
             if (client1.getId().equals(client)) {
                 return client1;
@@ -402,7 +407,7 @@ public class Storage {
         return null;
     }
     
-    public schedule findSchedule(schedule sq){
+    private schedule findSchedule(schedule sq){
         for (schedule schedule1 : schedules) {
             if(schedule1.equals(sq)){
                 return schedule1;
@@ -411,7 +416,7 @@ public class Storage {
         return null;
     }
     
-    public appointment findCanceledApp(appointment app){
+    private appointment findCanceledApp(appointment app){
         for (appointment appointment1 : canceled) {
             if(appointment1.equals(app)){
                 return appointment1;

@@ -14,7 +14,7 @@ import doctor.speciality;
  */
 public class DoctorRegisterController {
 
-    private Storage storage;
+    private final Storage storage;
 
     public DoctorRegisterController(Storage storage) {
         this.storage = storage;
@@ -22,8 +22,9 @@ public class DoctorRegisterController {
 
     public String register(String name, int id, speciality spec) {
         doctor d = new doctor(id, name, spec);
-
-        if (storage.addDoctor(d)) {
+        boolean var = storage.addDoctor(d);
+        System.out.println(var);
+        if (var) {
             return "El doctor fue agregado exitosamente";
         } else {
             return "El doctor ya se encontraba en la base de datos";
