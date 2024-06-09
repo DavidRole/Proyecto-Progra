@@ -6,6 +6,7 @@ package adminControlers;
 
 import AdminView.DoctorRegisterWindow;
 import Storage.Storage;
+import doctor.doctor;
 
 /**
  *
@@ -20,7 +21,7 @@ public class DoctorManagerController {
             }
         });
     }
-    public void deleteDoctor(){
-    
+    public boolean removeDoctor(doctor dre,Storage storage){
+        return storage.removeDoctor(dre);
     }
 }

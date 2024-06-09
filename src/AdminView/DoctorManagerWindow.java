@@ -10,6 +10,8 @@ import appointments.appointment;
 import appointments.schedule;
 import doctor.doctor;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DoctorManagerWindow extends javax.swing.JFrame {
 
-    private DoctorManagerController controler;
+    private DoctorManagerController controller;
     private Storage storage;
     private DefaultTableModel dmDoc;
     private DefaultTableModel dmApp;
@@ -29,7 +31,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     public DoctorManagerWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
-        controler = new DoctorManagerController();
+        controller = new DoctorManagerController();
         this.storage = storage;
 
         bt_cancelAppointment.setEnabled(false);
@@ -39,6 +41,8 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         dmApp = new DefaultTableModel();
         tb_doctors.setModel(dmDoc);
         tb_appointments.setModel(dmApp);
+        tb_doctors.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tb_doctors.setColumnSelectionAllowed(false);
 
         initializeModels();
         addDoctorsRows();
@@ -75,7 +79,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
                 bt_homeActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 330, -1, -1));
+        getContentPane().add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, -1, -1));
 
         bt_cancelAppointment.setText("Cancelar Cita");
         bt_cancelAppointment.addActionListener(new java.awt.event.ActionListener() {
@@ -198,11 +202,30 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_removeScheduleActionPerformed
 
     private void bt_addDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addDoctorActionPerformed
-        controler.registerWindow(storage);
+        controller.registerWindow(storage);
     }//GEN-LAST:event_bt_addDoctorActionPerformed
 
     private void bt_removeDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeDoctorActionPerformed
-        // TODO add your handling code here:
+        int temp = tb_doctors.getSelectedRow();
+        doctor doc = null;
+        if (temp > -1) {
+            int doctorId = (int) tb_doctors.getValueAt(temp, 0); // Obtener el ID del doctor seleccionado
+            for (doctor d : storage.getDoctors()) {
+                if (d.getId() == doctorId) {
+                    doc = d;
+                    break;
+                }
+            }
+        }
+
+        if (doc != null && controller.removeDoctor(doc, storage)) {
+            JOptionPane.showMessageDialog(null, "Doctor eliminado correctamente");
+            addDoctorsRows(); // Actualizar la tabla de doctores después de eliminar uno
+        } else {
+            JOptionPane.showMessageDialog(null, "El doctor no se puede eliminar porque tiene citas pendientes");
+        }
+        
+        addDoctorsRows();
     }//GEN-LAST:event_bt_removeDoctorActionPerformed
 
     private void tb_doctorsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tb_doctorsFocusGained
@@ -269,7 +292,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         schedule temp = storage.getSchedulePerDoctor(id);
         ArrayList<appointment> list = temp.getList();
         dmApp.setRowCount(0);
-        
+
         for (appointment object : list) {
             System.out.println(object.getDate());
             dmApp.addRow(object.toRow());

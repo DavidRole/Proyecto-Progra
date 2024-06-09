@@ -21,6 +21,7 @@ public class appointment implements Comparable<appointment>, Serializable{
     private boolean available;
     
     public appointment() {
+        id++;
     }
     
     
@@ -63,7 +64,7 @@ public class appointment implements Comparable<appointment>, Serializable{
 
     @Override
     public String toString() {
-        return pacient.getName() + ": "+ "date: " + format(date); 
+        return pacient.getFullName(); 
     }
     
     private static String format(GregorianCalendar calendar){

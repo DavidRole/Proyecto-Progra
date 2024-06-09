@@ -6,7 +6,11 @@ package AdminView;
 
 import Storage.Storage;
 import Usuario.User;
+import adminControlers.ClientInfoController;
 import appointments.appointment;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +19,8 @@ import appointments.appointment;
 public class ClientInfoWindow extends javax.swing.JFrame {
     private User user;
     private Storage storage;
+    private ClientInfoController controller;
+    private DefaultTableModel dmApp;
     /**
      * Creates new form ClientInfoWindow
      * @param user user info to show
@@ -25,9 +31,15 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.user=user;
         this.storage=storage;
+        dmApp = new DefaultTableModel();
+        controller = new ClientInfoController();
+        
+        tb_appointments.setModel(dmApp);
+        
         ta_clientInfo.setText(this.user.toString());
-        jl_appointments.setListData((String[]) this.storage.getActiveAppointments(this.user.getId()).toArray());
         bt_deleteAppointment.setEnabled(false);
+        
+//        addScheduleRow(user.getId());
     }
 
     /**
@@ -46,9 +58,9 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         bt_disableClient = new javax.swing.JButton();
         bt_addAppointment = new javax.swing.JButton();
         bt_deleteAppointment = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jl_appointments = new javax.swing.JList<>();
         lb_title = new javax.swing.JLabel();
+        scrollAppointments = new javax.swing.JScrollPane();
+        tb_appointments = new javax.swing.JTable();
         lb_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,33 +73,39 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         ta_clientInfo.setRows(5);
         scroll1.setViewportView(ta_clientInfo);
 
-        jPanel1.add(scroll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 330, 110));
+        jPanel1.add(scroll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 330, 140));
 
         bt_enable.setText("Habilitar Cliente");
-        jPanel1.add(bt_enable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        bt_disableClient.setText("Deshablilitar Cliente");
-        jPanel1.add(bt_disableClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
-
-        bt_addAppointment.setText("Agregar Cita");
-        jPanel1.add(bt_addAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
-
-        bt_deleteAppointment.setText("Eliminar Cita");
-        jPanel1.add(bt_deleteAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, -1, -1));
-
-        jl_appointments.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jl_appointments.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jl_appointmentsFocusGained(evt);
+        bt_enable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_enableActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jl_appointments);
+        jPanel1.add(bt_enable, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 320, 110));
+        bt_disableClient.setText("Deshablilitar Cliente");
+        bt_disableClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_disableClientActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_disableClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+
+        bt_addAppointment.setText("Agregar Cita");
+        bt_addAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_addAppointmentActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_addAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, -1, -1));
+
+        bt_deleteAppointment.setText("Eliminar Cita");
+        bt_deleteAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_deleteAppointmentActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_deleteAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
 
         lb_title.setBackground(new java.awt.Color(255, 255, 255));
         lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -95,17 +113,54 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         lb_title.setText("Información del Cliente");
         jPanel1.add(lb_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
-        lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
-        jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 220));
+        tb_appointments.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrollAppointments.setViewportView(tb_appointments);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 220));
+        jPanel1.add(scrollAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 330, 140));
+
+        lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
+        jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 240));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 240));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jl_appointmentsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jl_appointmentsFocusGained
-        bt_deleteAppointment.setEnabled(true);
-    }//GEN-LAST:event_jl_appointmentsFocusGained
+    private void bt_enableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_enableActionPerformed
+        if(!user.isEnable()){
+            user.setEnable(true);
+            JOptionPane.showMessageDialog(null, "El cliente se ha habilitado");
+        }else{
+            JOptionPane.showMessageDialog(null, "El cliente ya está habilitado");
+        }
+    }//GEN-LAST:event_bt_enableActionPerformed
+
+    private void bt_disableClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_disableClientActionPerformed
+        if(user.isEnable()){
+            user.setEnable(false);
+            JOptionPane.showMessageDialog(null, "El cliente se ha deshabilitado");
+        }else{
+            JOptionPane.showMessageDialog(null, "El cliente ya está deshabilitado");
+        }
+    }//GEN-LAST:event_bt_disableClientActionPerformed
+
+    private void bt_addAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addAppointmentActionPerformed
+        controller.addAppointment(user,storage);
+    }//GEN-LAST:event_bt_addAppointmentActionPerformed
+
+    private void bt_deleteAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deleteAppointmentActionPerformed
+        
+    }//GEN-LAST:event_bt_deleteAppointmentActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -114,11 +169,23 @@ public class ClientInfoWindow extends javax.swing.JFrame {
     private javax.swing.JButton bt_disableClient;
     private javax.swing.JButton bt_enable;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> jl_appointments;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_title;
     private javax.swing.JScrollPane scroll1;
+    private javax.swing.JScrollPane scrollAppointments;
     private javax.swing.JTextArea ta_clientInfo;
+    private javax.swing.JTable tb_appointments;
     // End of variables declaration//GEN-END:variables
+
+    private void addScheduleRow(String id) {
+        ArrayList<appointment> list = storage.getActiveAppointments(id);
+        dmApp.setRowCount(0);
+        
+        for (appointment object : list) {
+            System.out.println(object.getDate());
+            dmApp.addRow(object.toRow());
+        }
+        dmApp.fireTableDataChanged();
+    }
+
 }

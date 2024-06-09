@@ -5,11 +5,13 @@
 package AdminView;
 
 import Storage.Storage;
+import Usuario.User;
 
 import adminControlers.AdminLogInController;
 import appointments.schedule;
 import doctor.doctor;
 import doctor.speciality;
+import java.util.GregorianCalendar;
 
 //aca estuvo juanpa arreglando
 /**
@@ -139,14 +141,9 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-//        Storage storage = new Storage();
-//        
-//        storage.getDoctors().add(new doctor(777, "Juan", speciality.anastesiologia));
-//        storage.getDoctors().add(new doctor(15, "Mainor", speciality.cardiologia));
-//        storage.getDoctors().add(new doctor(4, "Pedro", speciality.internismo));
-//        storage.doctorWriter();
-//        storage.getSchedules().add(new schedule(777));
-//        storage.scheduleWriter();
+        Storage storage = new Storage();
+//        storage.addClient(new User("25", "g@mail.com", "Juana2511!", new GregorianCalendar(), "David", "Rodriguez", "8888-8888"));
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

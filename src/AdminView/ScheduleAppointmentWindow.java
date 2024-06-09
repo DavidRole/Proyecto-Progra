@@ -5,6 +5,7 @@
 package AdminView;
 
 import Storage.Storage;
+import Usuario.User;
 import appointments.appointment;
 import appointments.schedule;
 import doctor.doctor;
@@ -17,14 +18,16 @@ import java.util.ArrayList;
 public class ScheduleAppointmentWindow extends javax.swing.JFrame {
 
     private Storage storage;
+    private User user;
 
     /**
      * Creates new form ScheduleAppointmentWindow
      */
-    public ScheduleAppointmentWindow() {
+    public ScheduleAppointmentWindow(User user, Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
         this.storage = storage;
+        this.user = user;
         bt_schedule.setEnabled(false);
     }
 
@@ -38,10 +41,10 @@ public class ScheduleAppointmentWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         lb_schedules = new javax.swing.JLabel();
-        jl_schedules = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jl_doctors = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        scrollAppointments = new javax.swing.JScrollPane();
+        jl_appoinments = new javax.swing.JList<>();
+        scrollDoctors = new javax.swing.JScrollPane();
+        jl_doctors = new javax.swing.JList<>();
         lb_title = new javax.swing.JLabel();
         bt_schedule = new javax.swing.JButton();
         bt_home = new javax.swing.JButton();
@@ -56,28 +59,28 @@ public class ScheduleAppointmentWindow extends javax.swing.JFrame {
         lb_schedules.setText("Horarios disponibles");
         getContentPane().add(lb_schedules, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        jl_appoinments.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList2.addFocusListener(new java.awt.event.FocusAdapter() {
+        jl_appoinments.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jList2FocusGained(evt);
+                jl_appoinmentsFocusGained(evt);
             }
         });
-        jl_schedules.setViewportView(jList2);
+        scrollAppointments.setViewportView(jl_appoinments);
 
-        getContentPane().add(jl_schedules, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 200, 290));
+        getContentPane().add(scrollAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 200, 290));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jl_doctors.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jl_doctors.setViewportView(jList1);
+        scrollDoctors.setViewportView(jl_doctors);
 
-        getContentPane().add(jl_doctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 470, 290));
+        getContentPane().add(scrollDoctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 470, 290));
 
         lb_title.setBackground(new java.awt.Color(255, 255, 255));
         lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -115,9 +118,9 @@ public class ScheduleAppointmentWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_scheduleActionPerformed
 
-    private void jList2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jList2FocusGained
+    private void jl_appoinmentsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jl_appoinmentsFocusGained
         bt_schedule.setEnabled(true);
-    }//GEN-LAST:event_jList2FocusGained
+    }//GEN-LAST:event_jl_appoinmentsFocusGained
 
     /**
      * @param args the command line arguments
@@ -126,21 +129,12 @@ public class ScheduleAppointmentWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_home;
     private javax.swing.JButton bt_schedule;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JScrollPane jl_doctors;
-    private javax.swing.JScrollPane jl_schedules;
+    private javax.swing.JList<String> jl_appoinments;
+    private javax.swing.JList<String> jl_doctors;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_schedules;
     private javax.swing.JLabel lb_title;
+    private javax.swing.JScrollPane scrollAppointments;
+    private javax.swing.JScrollPane scrollDoctors;
     // End of variables declaration//GEN-END:variables
-
-//private void addRows() {
-//        schedule list = storage.getSchedulePerDoctor(0);
-//
-//        for (doctor d : list) {
-//            dm.addRow(d.toRow());
-//        }
-//    }
-    
 }

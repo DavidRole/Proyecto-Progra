@@ -180,7 +180,7 @@ public class Storage {
 
             while (object != null) {
                 schedule = (schedule) object;
-                System.out.println(schedule);
+//                System.out.println(schedule);
                 schedules.add(schedule);
                 object = input.readObject();
             }
@@ -339,59 +339,90 @@ public class Storage {
         return input;
     }
 
-    public boolean addDoctor(doctor d) {
+    public synchronized boolean addDoctor(doctor d) {
         doctorReader();
-        if(findDoctor(d.getId()) == null){
+        if (findDoctor(d.getId()) == null) {
             doctors.add(d);
             doctorWriter();
             doctorReader();
             return true;
-        }else{
+        } else {
             return false;
         }
-        
+
     }
-    
-    public boolean addClient(User client) {
+
+    public synchronized boolean addClient(User client) {
         clientReader();
-        if(findClient(client.getId()) == null){
+        if (findClient(client.getId()) == null) {
             clients.add(client);
             clientWriter();
             clientReader();
-        }else{
+        } else {
             return false;
         }
         return true;
     }
-    
-    public boolean addSchedule(schedule sq) {
+
+    public synchronized boolean addSchedule(schedule sq) {
         scheduleReader();
-        if(findSchedule(sq) == null){
+        if (findSchedule(sq) == null) {
             schedules.add(sq);
             scheduleWriter();
             scheduleReader();
-        }else{
+        } else {
             return false;
         }
         return true;
     }
-    
-    public boolean addCanceledApp(appointment appointment) {
+
+    public synchronized boolean addCanceledApp(appointment appointment) {
         cancelReader();
-        if(findCanceledApp(appointment) == null){
+        if (findCanceledApp(appointment) == null) {
             canceled.add(appointment);
             cancelWriter();
             cancelReader();
-        }else{
+        } else {
             return false;
         }
+        return true;
+    }
+
+    public synchronized boolean removeDoctor(doctor d) {
+        doctorReader();
+        if (getSchedulePerDoctor(d.getId()) == null) {
+            doctors.remove(0);
+            doctorWriter();
+            doctorReader();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public synchronized boolean removeClient(User client) {
+        clientReader();
+
+        clients.remove(client);
+        clientWriter();
+        clientReader();
+        return true;
+
+    }
+
+    public synchronized boolean removeSchedule(schedule sq) {
+        scheduleReader();
+
+        schedules.remove(sq);
+        scheduleWriter();
+        scheduleReader();
         return true;
     }
 
     private doctor findDoctor(int doc) {
         for (doctor doctor : doctors) {
             if (doctor.getId() == doc) {
-                System.out.println(doctor+"\n"+doc);
+                System.out.println(doctor + "\n" + doc);
                 return doctor;
             }
         }
@@ -406,23 +437,23 @@ public class Storage {
         }
         return null;
     }
-    
-    private schedule findSchedule(schedule sq){
+
+    private schedule findSchedule(schedule sq) {
         for (schedule schedule1 : schedules) {
-            if(schedule1.equals(sq)){
+            if (schedule1.equals(sq)) {
                 return schedule1;
             }
         }
         return null;
     }
-    
-    private appointment findCanceledApp(appointment app){
+
+    private appointment findCanceledApp(appointment app) {
         for (appointment appointment1 : canceled) {
-            if(appointment1.equals(app)){
+            if (appointment1.equals(app)) {
                 return appointment1;
-            } 
+            }
         }
         return null;
     }
-    
+
 }

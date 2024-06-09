@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 import Usuario.AbstractBuilder;
 import Usuario.UserException;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -15,6 +16,7 @@ import java.io.Serializable;
  * @author emanu
  */
 public class User implements Serializable{
+    private static final long serialVersionUID = 987654321L; 
     private String id;
     private String email;
     private String password;
@@ -22,6 +24,7 @@ public class User implements Serializable{
     private String name;
     private String lastName;
     private String phoneNumber;
+    private boolean enable;
 
     public User() {
     }
@@ -45,6 +48,16 @@ public class User implements Serializable{
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
     }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+    
+    
 
     public String getId() {
         return id;
@@ -101,10 +114,22 @@ public class User implements Serializable{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
+    
+    public String getFullName(){
+        return name+" "+lastName;
+    }
+    private static String format(GregorianCalendar calendar){
+        SimpleDateFormat sdf = new SimpleDateFormat("H:m dd MMM yyyy");
+        sdf.setCalendar(calendar);
+        String modDate = sdf.format(calendar.getTime());
+        return modDate;
+    }
+    
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", email=" + email + ", password=" + password + ", birthdayDate=" + birthdayDate + ", name=" + name + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + '}';
+        return "Cliente: \n"+ getFullName()+"\nCedula: "+id
+                +"\neMail: "+email+"\nFecha de nacimiento: "+format(birthdayDate)
+                +"\nNumero de telefono: "+phoneNumber;
     }
 
     public Object[] toRow() {

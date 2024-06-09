@@ -35,23 +35,22 @@ public class schedule implements Serializable {
         int finAlmuerzo = 13;       //final hora de almuerzo de los medicos
 
         if (hour >= minHour && hour < maxHour) {
-            if (hour != inicioAlmuerzo && hour >= finAlmuerzo) {
+            if (hour < inicioAlmuerzo || hour >= finAlmuerzo) {
                 list.add(ap);
                 list.sort((appointment o1, appointment o2) -> o1.getDate().compareTo(o2.getDate()));
-
                 return "La cita fue registrada de manera exitosa";
             }
-            return "La cita no puede ser agendada entre medio dia y 1pm por hora de almuerzo";
+            return "La cita no puede ser agendada entre medio día y 1pm por hora de almuerzo";
         } else {
-            return "La hora propuesta para la cita es invalida, debe ser entre 8am y 4pm";
+            return "La hora propuesta para la cita es inválida, debe ser entre 8am y 4pm";
         }
     }
 
     public appointment getAppointment(String id) {
         for (int i = 0; i < list.size(); i++) {
-            appointment appointmet = list.get(i);
-            if (appointmet.getPacient().getId().equals(id)) {
-                return appointmet;
+            appointment appointment = list.get(i);
+            if (appointment.getPacient().getId().equals(id)) {
+                return appointment;
             }
         }
         return null;
@@ -59,9 +58,9 @@ public class schedule implements Serializable {
 
     public appointment getAppointment(appointment ap) {
         for (int i = 0; i < list.size(); i++) {
-            appointment appointmet = list.get(i);
-            if (appointmet.equals(ap)) {
-                return appointmet;
+            appointment appointment = list.get(i);
+            if (appointment.equals(ap)) {
+                return appointment;
             }
         }
         return null;//cambiar por exception TALVEZ
@@ -96,20 +95,21 @@ public class schedule implements Serializable {
     }
 
     private void fillSchedule() {
+        // Obtiene la fecha actual del sistema
+        GregorianCalendar currentDate = new GregorianCalendar();
+        int year = currentDate.get(Calendar.YEAR);
+        int month = currentDate.get(Calendar.MONTH);
+        int day = currentDate.get(Calendar.DAY_OF_MONTH);
 
-        for (int i = 8; i < 16; i++) {
-            int j = 0;
-            GregorianCalendar date = new GregorianCalendar(2024, 06, 07, i, j);
-            appointment a = new appointment(null, date);
+        for (int hour = 8; hour < 16; hour++) {
+            for (int minute = 0; minute < 60; minute += 30) {
+                // Crea una fecha para cada intervalo de media hora
+                GregorianCalendar date = new GregorianCalendar(year, month, day, hour, minute);
+                appointment a = new appointment(null, date);
 
-            addAppointment(a);
-
-            if (j == 0) {
-                j = 30;
-            } else {
-                j = 0;
+                // Añade la cita al horario
+                addAppointment(a);
             }
         }
-
     }
 }
