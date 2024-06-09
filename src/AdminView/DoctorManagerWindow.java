@@ -68,9 +68,10 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         tb_appointments = new javax.swing.JTable();
         scrollDoctors = new javax.swing.JScrollPane();
         tb_doctors = new javax.swing.JTable();
+        bt_refresh = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_home.setText("Inicio");
@@ -95,7 +96,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
                 bt_removeScheduleActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_removeSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
+        getContentPane().add(bt_removeSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
 
         bt_addDoctor.setText("Agregar Doctor");
         bt_addDoctor.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +184,14 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
 
         getContentPane().add(scrollDoctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 510, 270));
 
+        bt_refresh.setText("Actualizar");
+        bt_refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_refreshActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bt_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, -1));
+
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         getContentPane().add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 370));
 
@@ -202,30 +211,20 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_removeScheduleActionPerformed
 
     private void bt_addDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addDoctorActionPerformed
+        
         controller.registerWindow(storage);
     }//GEN-LAST:event_bt_addDoctorActionPerformed
 
     private void bt_removeDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removeDoctorActionPerformed
         int temp = tb_doctors.getSelectedRow();
-        doctor doc = null;
-        if (temp > -1) {
-            int doctorId = (int) tb_doctors.getValueAt(temp, 0); // Obtener el ID del doctor seleccionado
-            for (doctor d : storage.getDoctors()) {
-                if (d.getId() == doctorId) {
-                    doc = d;
-                    break;
-                }
-            }
-        }
+        doctor doctorTemp = storage.getDoctors().get(temp);
 
-        if (doc != null && controller.removeDoctor(doc, storage)) {
+        if (controller.removeDoctor(doctorTemp, storage, temp)) {
             JOptionPane.showMessageDialog(null, "Doctor eliminado correctamente");
             addDoctorsRows(); // Actualizar la tabla de doctores después de eliminar uno
         } else {
             JOptionPane.showMessageDialog(null, "El doctor no se puede eliminar porque tiene citas pendientes");
         }
-        
-        addDoctorsRows();
     }//GEN-LAST:event_bt_removeDoctorActionPerformed
 
     private void tb_doctorsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tb_doctorsFocusGained
@@ -242,11 +241,16 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         bt_cancelAppointment.setEnabled(true);
     }//GEN-LAST:event_tb_appointmentsFocusGained
 
+    private void bt_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refreshActionPerformed
+        addDoctorsRows();
+    }//GEN-LAST:event_bt_refreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_addDoctor;
     private javax.swing.JButton bt_cancelAppointment;
     private javax.swing.JButton bt_home;
+    private javax.swing.JButton bt_refresh;
     private javax.swing.JButton bt_removeDoctor;
     private javax.swing.JButton bt_removeSchedule;
     private javax.swing.JLabel lb_appointments;
@@ -260,6 +264,7 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
 
     private void addDoctorsRows() {
         ArrayList<doctor> list = storage.getDoctors();
+        System.out.println("Lista de doctores actualizada: " + list); // Debug
 
         // Limpiar la tabla antes de agregar nuevas filas
         dmDoc.setRowCount(0);

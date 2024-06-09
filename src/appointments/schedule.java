@@ -112,4 +112,12 @@ public class schedule implements Serializable {
             }
         }
     }
+    public boolean pendientAppointment(){
+        for (appointment appointment : list) {
+            if (!appointment.isAvailable()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

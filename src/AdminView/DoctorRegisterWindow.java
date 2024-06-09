@@ -61,7 +61,7 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         bt_home = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,8 +120,13 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
         String name = txt_name.getText();
         int id = Integer.parseInt(txt_id.getText());
         speciality spec = parser((String) cb_speciality.getSelectedItem());
-        
-        JOptionPane.showMessageDialog(null, controller.register(name, id, spec));
+
+        if (controller.register(name, id, spec)) {
+            JOptionPane.showMessageDialog(null, "El doctor fue agregado exitosamente");
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null,"El doctor no se ha podido agregar porque ya existe" , "", JOptionPane.ERROR_MESSAGE, null);
+        }
     }//GEN-LAST:event_bt_registerDocActionPerformed
 
     private void bt_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_homeActionPerformed
@@ -154,7 +159,7 @@ public class DoctorRegisterWindow extends javax.swing.JFrame {
                 return speciality.dermatologia;
             case "neurologia":
                 return speciality.neurologia;
-            case "internimo":
+            case "internismo":
                 return speciality.internismo;
             case "oncologia":
                 return speciality.oncologia;

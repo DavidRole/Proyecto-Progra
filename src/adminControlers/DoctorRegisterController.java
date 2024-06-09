@@ -20,14 +20,9 @@ public class DoctorRegisterController {
         this.storage = storage;
     }
 
-    public String register(String name, int id, speciality spec) {
+    public boolean register(String name, int id, speciality spec) {
         doctor d = new doctor(id, name, spec);
-        boolean var = storage.addDoctor(d);
-        System.out.println(var);
-        if (var) {
-            return "El doctor fue agregado exitosamente";
-        } else {
-            return "El doctor ya se encontraba en la base de datos";
-        }
+        return storage.addDoctor(d);
+        
     }
 }

@@ -61,9 +61,10 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         lb_title = new javax.swing.JLabel();
         scrollAppointments = new javax.swing.JScrollPane();
         tb_appointments = new javax.swing.JTable();
+        bt_home = new javax.swing.JButton();
         lb_background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,7 +106,7 @@ public class ClientInfoWindow extends javax.swing.JFrame {
                 bt_deleteAppointmentActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_deleteAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
+        jPanel1.add(bt_deleteAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
         lb_title.setBackground(new java.awt.Color(255, 255, 255));
         lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -127,6 +128,14 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         scrollAppointments.setViewportView(tb_appointments);
 
         jPanel1.add(scrollAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 330, 140));
+
+        bt_home.setText("Inicio");
+        bt_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_homeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, -1, -1));
 
         lb_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundAdmin.jpg"))); // NOI18N
         jPanel1.add(lb_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 240));
@@ -162,12 +171,17 @@ public class ClientInfoWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bt_deleteAppointmentActionPerformed
 
+    private void bt_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_homeActionPerformed
+        dispose();
+    }//GEN-LAST:event_bt_homeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_addAppointment;
     private javax.swing.JButton bt_deleteAppointment;
     private javax.swing.JButton bt_disableClient;
     private javax.swing.JButton bt_enable;
+    private javax.swing.JButton bt_home;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lb_background;
     private javax.swing.JLabel lb_title;

@@ -318,6 +318,16 @@ public class Storage {
         }
         return null;// cambiar por exception TALVEZ
     }
+    public synchronized boolean pendientAppointment(int id) {
+        for (schedule schedule1 : schedules) {
+            if (schedule1.getDoctorID() == id) {
+                if (schedule1.pendientAppointment()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public synchronized ArrayList<doctor> getDoctors() {
         return doctors;
@@ -388,10 +398,11 @@ public class Storage {
         return true;
     }
 
-    public synchronized boolean removeDoctor(doctor d) {
+    public synchronized boolean removeDoctor(doctor d, int i) {
         doctorReader();
-        if (getSchedulePerDoctor(d.getId()) == null) {
-            doctors.remove(0);
+        
+        if (!pendientAppointment(d.getId())) {
+            doctors.remove(i);
             doctorWriter();
             doctorReader();
             return true;
