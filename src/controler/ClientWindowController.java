@@ -4,6 +4,7 @@
  */
 package controler;
 
+import Storage.Storage;
 import Usuario.User;
 import View.ClientWindow;
 import View.FormRegister;
@@ -17,8 +18,8 @@ import java.util.ArrayList;
 public class ClientWindowController {
     ArrayList<User> userlist;
 
-    public ClientWindowController(FormRegisterController controler) {
-        userlist = controler.getUserList();
+    public ClientWindowController(ArrayList<User> userList) {
+        this.userlist = userList;
     }
     
     public boolean logIn(String id, String password){
@@ -29,17 +30,17 @@ public class ClientWindowController {
         }
         return false;
     }
-    public void homeWindow(){
+    public void homeWindow(Storage storage, User user){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeWindow().setVisible(true);
+                new HomeWindow(storage, user).setVisible(true);
             }
         });
     }
-    public void registerWindow(FormRegisterController controler){
+    public void registerWindow(Storage storage){
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormRegister(controler).setVisible(true);
+                new FormRegister(storage).setVisible(true);
             }
         });
     }
