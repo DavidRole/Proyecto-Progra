@@ -4,6 +4,7 @@
  */
 package controler;
 
+import Storage.Storage;
 import View.CancelAppointmentWindow;
 import View.HistoryAppointmentWindow;
 import View.scheduleAppointmentWindow;
@@ -21,10 +22,10 @@ public class HomeWindowController extends javax.swing.JFrame {
             }
         });
     }
-    public void schedAction(){
+    public void schedAction(Storage storage){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new scheduleAppointmentWindow().setVisible(true);
+                new scheduleAppointmentWindow(storage).setVisible(true);
             }
         });
     }

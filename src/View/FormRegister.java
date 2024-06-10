@@ -4,6 +4,7 @@
  */
 package View;
 
+import Storage.Storage;
 import controler.FormRegisterController;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
@@ -19,8 +20,8 @@ public class FormRegister extends javax.swing.JFrame {
     /**
      * Creates new form FormRegister
      */
-    public FormRegister(FormRegisterController controler) {
-        this.controler = controler;
+    public FormRegister(Storage storage) {
+        this.controler = new FormRegisterController(storage);
         initComponents();
         setLocationRelativeTo(null);
     }

@@ -4,6 +4,7 @@
  */
 package View;
 
+import Storage.Storage;
 import controler.ClientWindowController;
 import controler.FormRegisterController;
 import controler.HomeWindowController;
@@ -17,15 +18,20 @@ public class ClientWindow extends javax.swing.JFrame {
 
     private ClientWindowController controler;
     private FormRegisterController controlerForm;
+    private Storage storage;
 
     /**
      * Creates new form ClientWindow
      */
     public ClientWindow() {
+        storage = new Storage();
+        storage.doctorReader();
+        storage.clientReader();
+        storage.scheduleReader();
         initComponents();
         setLocationRelativeTo(null);
-        controlerForm = new FormRegisterController();
-        controler = new ClientWindowController(controlerForm);
+        controlerForm = new FormRegisterController(storage);
+        controler = new ClientWindowController(storage);
         
     }
 
@@ -127,7 +133,7 @@ public class ClientWindow extends javax.swing.JFrame {
         String password = pf_password.getText();
 
         if (controler.logIn(id, password)) {
-            controler.homeWindow();
+            controler.homeWindow(storage);
         }else{
             JOptionPane.showMessageDialog(null, "Contraseña o Cedula incorrecta digitela de nuevo");
         }
@@ -135,7 +141,7 @@ public class ClientWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_singUpActionPerformed
 
     private void bt_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registerMouseClicked
-        controler.registerWindow(controlerForm);
+        controler.registerWindow(storage);
     }//GEN-LAST:event_bt_registerMouseClicked
 
     /**

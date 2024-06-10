@@ -219,9 +219,8 @@ public class DoctorManagerWindow extends javax.swing.JFrame {
         int temp = tb_doctors.getSelectedRow();
         doctor doctorTemp = storage.getDoctors().get(temp);
 
-        if (controller.removeDoctor(doctorTemp, storage)) {
+        if (controller.removeDoctor(doctorTemp, storage, temp)) {
             JOptionPane.showMessageDialog(null, "Doctor eliminado correctamente");
-            addDoctorsRows(); // Actualizar la tabla de doctores después de eliminar uno
         } else {
             JOptionPane.showMessageDialog(null, "El doctor no se puede eliminar porque tiene citas pendientes");
         }

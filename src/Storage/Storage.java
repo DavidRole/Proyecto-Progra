@@ -398,11 +398,11 @@ public class Storage {
         return true;
     }
 
-    public synchronized boolean removeDoctor(doctor d) {
+    public synchronized boolean removeDoctor(doctor d,int i) {
         doctorReader();
         
         if (!pendientAppointment(d.getId())) {
-            doctors.remove(d);
+            doctors.remove(i);
             doctorWriter();
             doctorReader();
             return true;

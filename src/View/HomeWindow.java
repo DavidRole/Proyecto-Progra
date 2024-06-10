@@ -4,6 +4,7 @@
  */
 package View;
 
+import Storage.Storage;
 import controler.HomeWindowController;
 
 
@@ -15,11 +16,12 @@ import controler.HomeWindowController;
 public class HomeWindow extends javax.swing.JFrame {
     
     private HomeWindowController controler;
-    
+    private Storage storage;
     /**
      * Creates new form HomeWindow
      */
-    public HomeWindow() {
+    public HomeWindow(Storage storage) {
+        this.storage = storage;
         initComponents();
         setLocationRelativeTo(null);
         controler = new HomeWindowController();
@@ -101,7 +103,7 @@ public class HomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_historyActionPerformed
 
     private void bt_schedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_schedActionPerformed
-        controler.schedAction();
+        controler.schedAction(storage);
     }//GEN-LAST:event_bt_schedActionPerformed
 
     private void bt_cancelAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelAppActionPerformed

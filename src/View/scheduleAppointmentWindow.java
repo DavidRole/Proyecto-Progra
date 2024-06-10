@@ -4,19 +4,35 @@
  */
 package View;
 
+import Storage.Storage;
+import doctor.doctor;
+import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author darod
  */
 public class scheduleAppointmentWindow extends javax.swing.JFrame {
 
+    private DefaultTableModel dmDoc;
+    private Storage storage;
+
     /**
      * Creates new form scheduleAppointmentWindow
      */
-    public scheduleAppointmentWindow() {
+    public scheduleAppointmentWindow(Storage storage) {
         initComponents();
         setLocationRelativeTo(null);
+        this.storage = storage;
+        dmDoc = new DefaultTableModel();
+        tb_doctor.setModel(dmDoc);
+        tb_doctor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tb_doctor.setColumnSelectionAllowed(false);
 
+        initializeModels();
+        addDoctorsRows();
     }
 
     /**
@@ -30,13 +46,13 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lb_schedules = new javax.swing.JLabel();
-        jl_schedules = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jl_doctors = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         lb_title = new javax.swing.JLabel();
         bt_schedule = new javax.swing.JButton();
         bt_home = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_doctor = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,24 +66,6 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
         lb_schedules.setForeground(new java.awt.Color(0, 0, 0));
         lb_schedules.setText("Horarios disponibles");
         jPanel1.add(lb_schedules, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
-
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jl_schedules.setViewportView(jList2);
-
-        jPanel1.add(jl_schedules, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 200, 290));
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jl_doctors.setViewportView(jList1);
-
-        jPanel1.add(jl_doctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 470, 290));
 
         lb_title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lb_title.setForeground(new java.awt.Color(0, 0, 0));
@@ -84,6 +82,37 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
             }
         });
         jPanel1.add(bt_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 353, -1, -1));
+
+        tb_doctor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tb_doctor);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 490, 290));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 190, 290));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6846089.jpg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 750, 380));
@@ -102,12 +131,40 @@ public class scheduleAppointmentWindow extends javax.swing.JFrame {
     private javax.swing.JButton bt_home;
     private javax.swing.JButton bt_schedule;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jl_doctors;
-    private javax.swing.JScrollPane jl_schedules;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_schedules;
     private javax.swing.JLabel lb_title;
+    private javax.swing.JTable tb_doctor;
     // End of variables declaration//GEN-END:variables
+private void addDoctorsRows() {
+        ArrayList<doctor> list = storage.getDoctors();
+        System.out.println("Lista de doctores actualizada: " + list); // Debug
+
+        // Limpiar la tabla antes de agregar nuevas filas
+        dmDoc.setRowCount(0);
+
+        // Agregar filas al modelo de la tabla
+        for (doctor doc : list) {
+            Object[] rowData = {doc.getId(), doc.getName(), doc.getSpec()};
+            dmDoc.addRow(rowData);
+        }
+
+        // Actualizar la tabla
+        dmDoc.fireTableDataChanged();
+    }
+
+    private void initializeModels() {
+        // Encabezados de las columnas
+        String[] doctorColumnHeaders = {"ID", "Nombre", "Especialidad"};
+        String[] appointmentColumnHeaders = {"Cliente", "Fecha"};
+
+        // Crear modelos de tabla con los encabezados
+        dmDoc = new DefaultTableModel(doctorColumnHeaders, 0);
+
+        // Asignar los modelos a las tablas
+        tb_doctor.setModel(dmDoc);
+    }
 }

@@ -12,6 +12,7 @@ import appointments.schedule;
 import doctor.doctor;
 import doctor.speciality;
 import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
 
 //aca estuvo juanpa arreglando
 /**
@@ -111,7 +112,10 @@ public class AdminLogInWindow extends javax.swing.JFrame {
         String id = txt_Id.getText();
         String password = pf_password.getText();
 
-        controler.logIn(id, password);
+        if (!controler.logIn(id, password)) {
+            JOptionPane.showMessageDialog(null, "Contraseña y/o usuario incorrectos", null, JOptionPane.ERROR_MESSAGE, null);
+        }
+
     }//GEN-LAST:event_bt_singUpActionPerformed
 
     /**

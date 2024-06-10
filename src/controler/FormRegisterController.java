@@ -4,6 +4,7 @@
  */
 package controler;
 
+import Storage.Storage;
 import Usuario.AbstractBuilder;
 import Usuario.User;
 import Usuario.UserBuilder;
@@ -20,8 +21,8 @@ public class FormRegisterController {
     private ArrayList<User> userList;
     private AbstractBuilder builder;
 
-    public FormRegisterController() {
-        this.userList = new ArrayList<>();
+    public FormRegisterController(Storage storage) {
+        this.userList = storage.getClients();
         builder = new UserBuilder();
     }
     
@@ -52,4 +53,5 @@ public class FormRegisterController {
         this.userList = userList;
     }
     
+
 }

@@ -21,7 +21,7 @@ public class DoctorManagerController {
             }
         });
     }
-    public boolean removeDoctor(doctor dre,Storage storage){
-        return storage.removeDoctor(dre);
+    public boolean removeDoctor(doctor dre,Storage storage, int i){
+        return storage.removeDoctor(dre,i);
     }
 }
