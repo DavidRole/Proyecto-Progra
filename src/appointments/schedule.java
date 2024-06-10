@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
 
 /**
  *
- * @author david
+ * @author guineo
  */
 public class schedule implements Serializable {
 
