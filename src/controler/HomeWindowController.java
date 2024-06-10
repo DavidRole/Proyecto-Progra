@@ -6,9 +6,9 @@ package controler;
 
 import Storage.Storage;
 import Usuario.User;
-import View.CancelAppointmentWindow;
-import View.HistoryAppointmentWindow;
-import View.scheduleAppointmentWindow;
+import ClientView.CancelAppointmentWindow;
+import ClientView.HistoryAppointmentWindow;
+import ClientView.scheduleAppointmentWindow;
 
 /**
  *

@@ -6,9 +6,9 @@ package controler;
 
 import Storage.Storage;
 import Usuario.User;
-import View.ClientWindow;
-import View.FormRegister;
-import View.HomeWindow;
+import ClientView.ClientWindow;
+import ClientView.FormRegister;
+import ClientView.HomeWindow;
 import java.util.ArrayList;
 
 /**
