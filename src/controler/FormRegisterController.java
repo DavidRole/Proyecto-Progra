@@ -21,12 +21,12 @@ public class FormRegisterController {
     private ArrayList<User> userList;
     private AbstractBuilder builder;
 
-    public FormRegisterController(Storage storage) {
-        this.userList = storage.getClients();
+    public FormRegisterController(ArrayList<User> userList) {
+        this.userList = userList;
         builder = new UserBuilder();
     }
     
-    public String Register(String id, String email, String password, GregorianCalendar birthdayDate, String name, String lastName, String phoneNumber) {
+    public String Register(String id, String email, String password, GregorianCalendar birthdayDate, String name, String lastName, String phoneNumber,Storage storage) {
         User temp;
         try {
             temp = new User().getUser(builder, id, email, password, birthdayDate, name, lastName, phoneNumber);
@@ -39,7 +39,7 @@ public class FormRegisterController {
             }
         }
         if (temp != null) {
-            userList.add(temp);
+            storage.addClient(temp);
             return "Usuario registrado correctamente";
         }
         return "";

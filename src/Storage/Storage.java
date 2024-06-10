@@ -318,6 +318,7 @@ public class Storage {
         }
         return null;// cambiar por exception TALVEZ
     }
+
     public synchronized boolean pendientAppointment(int id) {
         for (schedule schedule1 : schedules) {
             if (schedule1.getDoctorID() == id) {
@@ -398,9 +399,9 @@ public class Storage {
         return true;
     }
 
-    public synchronized boolean removeDoctor(doctor d,int i) {
+    public synchronized boolean removeDoctor(doctor d, int i) {
         doctorReader();
-        
+
         if (!pendientAppointment(d.getId())) {
             doctors.remove(i);
             doctorWriter();
@@ -430,7 +431,7 @@ public class Storage {
         return true;
     }
 
-    private doctor findDoctor(int doc) {
+    public doctor findDoctor(int doc) {
         for (doctor doctor : doctors) {
             if (doctor.getId() == doc) {
                 System.out.println(doctor + "\n" + doc);
@@ -440,7 +441,7 @@ public class Storage {
         return null;
     }
 
-    private User findClient(String client) {
+    public User findClient(String client) {
         for (User client1 : clients) {
             if (client1.getId().equals(client)) {
                 return client1;
@@ -449,7 +450,7 @@ public class Storage {
         return null;
     }
 
-    private schedule findSchedule(schedule sq) {
+    public schedule findSchedule(schedule sq) {
         for (schedule schedule1 : schedules) {
             if (schedule1.equals(sq)) {
                 return schedule1;
@@ -458,7 +459,7 @@ public class Storage {
         return null;
     }
 
-    private appointment findCanceledApp(appointment app) {
+    public  appointment findCanceledApp(appointment app) {
         for (appointment appointment1 : canceled) {
             if (appointment1.equals(app)) {
                 return appointment1;

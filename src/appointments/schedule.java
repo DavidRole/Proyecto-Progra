@@ -26,7 +26,7 @@ public class schedule implements Serializable {
         this.doctorID = id;
         fillSchedule();
     }
-    
+
     public schedule(Integer id, int min, int max) {
         this.list = new ArrayList<>();
         this.doctorID = id;
@@ -59,13 +59,13 @@ public class schedule implements Serializable {
         int minHour;
         int maxHour;
         if (min >= 8 && max <= 16) {
-            minHour = min;         
+            minHour = min;
             maxHour = max;
         } else {
-            minHour = 8;        
+            minHour = 8;
             maxHour = 16;
         }
-        
+
         //Eso representa a las 4pm en formato 24h 
         int inicioAlmuerzo = 12;    //inicio hora de almuerzo de los medicos  
         int finAlmuerzo = 13;       //final hora de almuerzo de los medicos
@@ -110,6 +110,7 @@ public class schedule implements Serializable {
         return msg;
     }
 
+   
     public Integer getDoctorID() {
         return doctorID;
     }

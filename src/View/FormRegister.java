@@ -5,7 +5,10 @@
 package View;
 
 import Storage.Storage;
+import Usuario.User;
 import controler.FormRegisterController;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
@@ -16,14 +19,16 @@ import javax.swing.JOptionPane;
 public class FormRegister extends javax.swing.JFrame {
 
     private FormRegisterController controler;
+    private Storage storage;
 
     /**
      * Creates new form FormRegister
      */
     public FormRegister(Storage storage) {
-        this.controler = new FormRegisterController(storage);
+        this.controler = new FormRegisterController(storage.getClients());
         initComponents();
         setLocationRelativeTo(null);
+        this.storage = storage;
     }
 
     /**
@@ -138,7 +143,7 @@ public class FormRegister extends javax.swing.JFrame {
         String lastName = jtxf_LastName.getText();
         String phoneNumber = jtxf_phoneNumber.getText();
         
-        String menssage = controler.Register(id, email, password, birthdaydate, name, lastName, phoneNumber);
+        String menssage = controler.Register(id, email, password, birthdaydate, name, lastName, phoneNumber,storage);
         JOptionPane.showMessageDialog(null, menssage);
         System.out.println(password);
         if (menssage.equals("Usuario registrado correctamente")) {

@@ -84,5 +84,9 @@ public class appointment implements Comparable<appointment>, Serializable{
         
         return data;
     }
-    
+     public Object[] appointMenttoRow(){
+        Object[] data = {format(date)};
+        
+        return data;
+    }
 }
