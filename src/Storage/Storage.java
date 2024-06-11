@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 
 /**
  *
@@ -37,10 +39,7 @@ public class Storage {
     private ObjectInputStream input = null;
     private ObjectOutputStream output = null;
 
-    /**
-     *
-     * @author Usuario
-     */
+    
     public Storage() {
         doctors = new ArrayList<>();
         clients = new ArrayList<>();
@@ -48,6 +47,9 @@ public class Storage {
         canceled = new ArrayList<>();
     }
 
+    /**
+     * Lee el documento que contiene la lista de doctores
+     */
     public synchronized void doctorReader() {
         doctors = new ArrayList<>();
 
@@ -86,6 +88,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Escribe el listado de los doctores activos
+     */
     public synchronized void doctorWriter() {
         //Codigo escritura
 
@@ -109,6 +114,9 @@ public class Storage {
         }
     }
 
+    /**
+     * lee la lista de los clientes en el documento respectivo
+     */
     public synchronized void clientReader() {
         this.clients = new ArrayList<>();
         try {
@@ -146,6 +154,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Escribe la lista de clientes activos en su documento
+     */
     public synchronized void clientWriter() {
         //Codigo escritura 
         try {
@@ -168,6 +179,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Leelos horarios del documento respectivo
+     */
     public synchronized void scheduleReader() {
         this.schedules = new ArrayList<>();
 
@@ -206,6 +220,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Escribe los horarios en su respectivo documento
+     */
     public synchronized void scheduleWriter() {
         //Codigo escritura 
         try {
@@ -228,6 +245,9 @@ public class Storage {
         }
     }
 
+    /**
+     * lee el documento de las citas canceladas 
+     */
     public synchronized void cancelReader() {
         this.canceled = new ArrayList<>();
 
@@ -266,6 +286,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Escribe el el documento las citas canceladas
+     */
     public synchronized void cancelWriter() {
         //Codigo escritura 
         try {
@@ -288,6 +311,11 @@ public class Storage {
         }
     }
 
+    /**
+     *
+     * @param id cedula del cliente a buscar citas activas
+     * @return listado de las citas activas del cliente
+     */
     public synchronized ArrayList<appointment> getActiveAppointments(String id) {
         ArrayList<appointment> activeAppointments = new ArrayList<>();
         appointment temp = null;
@@ -300,6 +328,11 @@ public class Storage {
         return activeAppointments;
     }
 
+    /**
+     *
+     * @param ap cita a buscar
+     * @return null si la cita no se encuentra o la cita en caso de que se encuentre
+     */
     public synchronized appointment getAppointment(appointment ap) {
         appointment temp = null;
 
@@ -310,6 +343,11 @@ public class Storage {
         return temp;
     }
 
+    /**
+     *
+     * @param id ID de empleado del doctor que desea saber el horario
+     * @return el horario asignado al id del doctor solicitado
+     */
     public synchronized schedule getSchedulePerDoctor(int id) {
         for (schedule schedule1 : schedules) {
             if (schedule1.getDoctorID() == id) {
@@ -319,6 +357,11 @@ public class Storage {
         return null;// cambiar por exception TALVEZ
     }
 
+    /**
+     *
+     * @param id id del doctor a confirmar si tiene citas pendientes
+     * @return true si tiene citas pendientes o false si ya tiene el horario libre
+     */
     public synchronized boolean pendientAppointment(int id) {
         for (schedule schedule1 : schedules) {
             if (schedule1.getDoctorID() == id) {
@@ -330,26 +373,52 @@ public class Storage {
         return false;
     }
 
+    /**
+     * \
+     *
+     * @return lista de Doctores activos
+     */
     public synchronized ArrayList<doctor> getDoctors() {
         return doctors;
     }
 
+    /**
+     *
+     * @return lista de clientes activos
+     */
     public synchronized ArrayList<User> getClients() {
         return clients;
     }
 
+    /**
+     *
+     * @return lista de horarios
+     */
     public synchronized ArrayList<schedule> getSchedules() {
         return schedules;
     }
 
+    /**
+     *
+     * @return lista de citas canceladas asignadas a clientes
+     */
     public synchronized ArrayList<appointment> getCanceled() {
         return canceled;
     }
 
+    /**
+     *  No sé por que está este metodo acá
+     * @return 
+     */
     public synchronized ObjectInputStream getInput() {
         return input;
     }
 
+    /**
+     *
+     * @param d Doctor a añadir
+     * @return true si se añade el Doctor o false si ya existe
+     */
     public synchronized boolean addDoctor(doctor d) {
         doctorReader();
         if (findDoctor(d.getId()) == null) {
@@ -363,6 +432,11 @@ public class Storage {
 
     }
 
+    /**
+     *
+     * @param client cliente a añadir
+     * @return True si se puedo añadir o false si ya existe el cliente
+     */
     public synchronized boolean addClient(User client) {
         clientReader();
         if (findClient(client.getId()) == null) {
@@ -375,6 +449,11 @@ public class Storage {
         return true;
     }
 
+    /**
+     *
+     * @param sq horario a añadir
+     * @return True si se puedo añadir o false si ya existe el horario
+     */
     public synchronized boolean addSchedule(schedule sq) {
         scheduleReader();
         if (findSchedule(sq) == null) {
@@ -387,6 +466,11 @@ public class Storage {
         return true;
     }
 
+    /**
+     *
+     * @param appointment cita cancelada a agregar a el documento y lista de citas canceladas
+     * @return true si se agrega correctamente o false en el caso contrario
+     */
     public synchronized boolean addCanceledApp(appointment appointment) {
         cancelReader();
         if (findCanceledApp(appointment) == null) {
@@ -399,6 +483,12 @@ public class Storage {
         return true;
     }
 
+    /**
+     *  El metodo valida que el doctor no tenga citas pendientes y posteriormente lo elimina del archivo y la lista
+     * @param d doctor a eliminar
+     * @param i posición del doctor en la lista (se obtiene de la tabla que los muestra)
+     * @return True si se elimina correctamente o false en caso contrario
+     */
     public synchronized boolean removeDoctor(doctor d, int i) {
         doctorReader();
 
@@ -412,6 +502,11 @@ public class Storage {
         }
     }
 
+    /**
+     *
+     * @param client cliente a eliminar de la lista y archivo
+     * @return true si se elimina correctamente o false en caso contrario
+     */
     public synchronized boolean removeClient(User client) {
         clientReader();
 
@@ -422,6 +517,11 @@ public class Storage {
 
     }
 
+    /**
+     *
+     * @param sq horario a eliminar de la lista
+     * @return true si se elimina correctamente o false en caso contrario
+     */
     public synchronized boolean removeSchedule(schedule sq) {
         scheduleReader();
 
@@ -431,7 +531,12 @@ public class Storage {
         return true;
     }
 
-    public doctor findDoctor(int doc) {
+    /**
+     *
+     * @param doc doctor a buscar
+     * @return el doctor si se encuentra en la lista o null en caso contrario
+     */
+    public synchronized doctor findDoctor(int doc) {
         for (doctor doctor : doctors) {
             if (doctor.getId() == doc) {
                 System.out.println(doctor + "\n" + doc);
@@ -441,7 +546,12 @@ public class Storage {
         return null;
     }
 
-    public User findClient(String client) {
+    /**
+     *
+     * @param client cliente a buscar
+     * @return el cliente si se encuentra en la lista o null en caso contrario
+     */
+    public synchronized User findClient(String client) {
         for (User client1 : clients) {
             if (client1.getId().equals(client)) {
                 return client1;
@@ -450,7 +560,12 @@ public class Storage {
         return null;
     }
 
-    public schedule findSchedule(schedule sq) {
+    /**
+     *
+     * @param sq horario a buscar
+     * @return el horario si se encuentra en la lista o null en caso contrario
+     */
+    public synchronized schedule findSchedule(schedule sq) {
         for (schedule schedule1 : schedules) {
             if (schedule1.equals(sq)) {
                 return schedule1;
@@ -459,13 +574,49 @@ public class Storage {
         return null;
     }
 
-    public  appointment findCanceledApp(appointment app) {
+    /**
+     *
+     * @param app cita a buscar
+     * @return la cita cancelada si se encuentra en la lista o null en caso contrario
+     */
+    public synchronized appointment findCanceledApp(appointment app) {
         for (appointment appointment1 : canceled) {
             if (appointment1.equals(app)) {
                 return appointment1;
             }
         }
         return null;
+    }
+
+    /**
+     *
+     * @param schedule horario a actualizar
+     * @return true 
+     */
+    public synchronized boolean updateSchedule(schedule schedule) {
+        scheduleReader();
+        schedule temp = findSchedule(schedule);
+        temp = schedule;
+        scheduleWriter();
+        scheduleReader();
+
+        return true;
+    }
+    /**
+     * Busca los horarios pasados del cliente
+     * @return el horario cuya fecha ya pasó
+     */
+    public synchronized ArrayList getPassedSchedule(){
+        
+        GregorianCalendar today = new GregorianCalendar();
+        ArrayList<schedule> passedSchedule = new ArrayList();
+        
+        for (schedule schedule1 : schedules) {
+            if(schedule1.getDate().before(today)){
+                passedSchedule.add(schedule1);
+            }
+        }
+        return passedSchedule;
     }
 
 }
