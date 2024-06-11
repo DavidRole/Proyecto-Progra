@@ -177,4 +177,14 @@ public class schedule implements Serializable {
         }
         return false;
     }
+    
+    public ArrayList<appointment> getAvailable() {
+        ArrayList<appointment> temp = new ArrayList<>();
+        for (appointment li : list) {
+            if (li.isAvailable()) {
+                temp.add(li);
+            }
+        }
+        return temp;
+    }
 }
