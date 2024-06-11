@@ -30,10 +30,10 @@ public class HomeWindowController extends javax.swing.JFrame {
             }
         });
     }
-    public void cancelApp(){
+    public void cancelApp(Storage storage, User user){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CancelAppointmentWindow().setVisible(true);
+                new CancelAppointmentWindow(storage, user).setVisible(true);
             }
         });
     }
