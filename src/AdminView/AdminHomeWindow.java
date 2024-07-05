@@ -93,7 +93,7 @@ public class AdminHomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_manageClientsActionPerformed
 
     private void bt_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_exitActionPerformed
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_bt_exitActionPerformed
 
 

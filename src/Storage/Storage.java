@@ -614,17 +614,17 @@ public class Storage {
     }
 
     /**
-     *
-     * @param schedule horario a actualizar
-     * @return true
-     */
-    public synchronized boolean updateSchedule(schedule schedule) {
+    * 
+    * @param list Lista de appointments a actualizar
+    * @param id ID del doctor
+    * @return 
+    */
+    public synchronized boolean updateSchedule(ArrayList<appointment> list, int id) {
         scheduleReader();
-        schedule temp = findSchedule(schedule);
-        temp = schedule;
+        schedule temp = getSchedulePerDoctor(id);
+        temp.setList(list);
         scheduleWriter();
         scheduleReader();
-
         return true;
     }
 

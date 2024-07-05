@@ -110,7 +110,7 @@ public class HomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_schedActionPerformed
 
     private void bt_cancelAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelAppActionPerformed
-        controler.cancelApp(storage,user);
+        controler.cancelApp(storage, user);
     }//GEN-LAST:event_bt_cancelAppActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

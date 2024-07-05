@@ -18,7 +18,7 @@ public class schedule implements Serializable {
 
     private static final long serialVersionUID = 123498765L;
     private Integer doctorID;
-    private final ArrayList<appointment> list;
+    private ArrayList<appointment> list;
     private GregorianCalendar date;
 
     public schedule(Integer id) {
@@ -186,5 +186,9 @@ public class schedule implements Serializable {
             }
         }
         return temp;
+    }
+
+    public void setList(ArrayList<appointment> list) {
+        this.list = list;
     }
 }
